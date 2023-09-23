@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  text-decoration: none;
+}
+
+html,
+body {
+  width: 100vw;
+
+  min-width: 300px;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+body {
+  height: 100vh;
+
+  // background: rgb(251, 251, 250);
+  background: #ffffff;
+
+  color: #0d1117;
+
+  display: flex;
+  flex-direction: column;
+
+  &.modal_open {
+    overflow: hidden;
+  }
+}
+
+main {
+  width: 100%;
+  min-height: 100%;
+
+  flex: 1 1 auto;
+}

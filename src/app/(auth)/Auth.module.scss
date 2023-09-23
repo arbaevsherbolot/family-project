@@ -1,0 +1,16 @@
+.page_wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  padding: 0.5rem;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  background: #f6f7f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
