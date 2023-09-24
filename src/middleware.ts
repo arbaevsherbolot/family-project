@@ -34,7 +34,9 @@ export async function middleware(request: NextRequest) {
       const userDataResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
         {
+          method: "GET",
           headers: headers,
+          credentials: "include",
         }
       );
 
