@@ -18,6 +18,11 @@ export default function Header() {
 
   const [loading, setLoading] = useState<boolean>(false);
 
+  console.log({
+    user,
+    session,
+  });
+
   const logout = async () => {
     setLoading(true);
 

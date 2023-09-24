@@ -30,7 +30,6 @@ export async function middleware(request: NextRequest) {
     try {
       const headers = new Headers();
       headers.append("Authorization", "Bearer " + session);
-      headers.append("Content-Type", 'application/json');
 
       const userDataResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
