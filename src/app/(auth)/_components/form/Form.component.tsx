@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getCookie } from "cookies-next";
-import { useLogin } from "../../../../lib/auth/useLogin";
+import { Login } from "../../../../lib/auth/Login";
 import {
   errorNotification,
   successNotification,
@@ -34,7 +34,7 @@ export default function Form() {
     setLoading(true);
 
     try {
-      const { success } = await useLogin(data);
+      const { success } = await Login(data);
 
       if (success) {
         successNotification("Успешный вход в систему");

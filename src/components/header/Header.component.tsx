@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { links } from "../../data/links";
-import { useLogout } from "../../lib/auth/useLogout";
+import { Logout } from "../../lib/auth/Logout";
 import Image from "next/image";
 import { ArbaevsLogoSvg } from "../../assets/svg/index";
 import styles from "./Header.module.scss";
@@ -17,7 +17,7 @@ export default function Header({ session }: props) {
   const router = useRouter();
 
   const logout = async () => {
-    await useLogout(session);
+    await Logout(session);
     router.refresh();
   };
 

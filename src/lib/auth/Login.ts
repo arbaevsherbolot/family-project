@@ -11,7 +11,7 @@ type TLoginResponse = {
   refresh_token: string;
 };
 
-export async function useLogin(data: TLogin) {
+export async function Login(data: TLogin) {
   try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
@@ -26,7 +26,7 @@ export async function useLogin(data: TLogin) {
     setCookie("session", responseData.access_token);
 
     return {
-      success: true
+      success: true,
     };
   } catch (e) {
     const error = {
