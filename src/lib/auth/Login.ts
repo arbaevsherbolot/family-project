@@ -21,15 +21,14 @@ export async function Login(data: TLogin) {
         ...data,
       }
     );
-    const responseData: TLoginResponse = response.data;
-    const session = responseData.access_token;
+    const responseTokens: TLoginResponse = response.data.tokens;
+    const session = responseTokens.access_token;
 
     let success: boolean = false;
 
     if (session) {
-      setCookie("session", session);
-
       success = true;
+      setCookie("session", session);
     }
 
     return {

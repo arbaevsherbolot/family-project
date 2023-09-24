@@ -8,8 +8,8 @@ import { Login } from "../../../../lib/auth/Login";
 import {
   errorNotification,
   successNotification,
-} from "@/lib/utils/notification";
-import Button from "../../../../components/button/Button";
+} from "../../../../lib/utils/notification";
+import Button from "../../../../components/ui/button/Button.component";
 import styles from "./Form.module.scss";
 
 type FormData = {
@@ -17,7 +17,7 @@ type FormData = {
   password: string;
 };
 
-export default function Form() {
+export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -45,9 +45,10 @@ export default function Form() {
         setLoading(false);
       }
     } catch (e) {
-      setLoading(false);
       //@ts-ignore
       errorNotification(e.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,7 +114,9 @@ export default function Form() {
               )}
             </div>
 
-            <Button load={loading}>Войти</Button>
+            <Button type="submit" load={loading}>
+              Войти
+            </Button>
           </div>
 
           <div className={styles.desc}>

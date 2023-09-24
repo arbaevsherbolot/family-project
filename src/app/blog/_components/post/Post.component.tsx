@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { PostType } from "../../../../data/posts";
 import { PointsSvg } from "../../../../assets/svg";
 import { menuItems } from "../../../../data/menu";
-import Modal from "@/components/modal/Modal.component";
+import Modal from "../../../../components/ui/modal/Modal.component";
 import styles from "./Post.module.scss";
 
 interface props {

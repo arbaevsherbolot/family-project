@@ -1,12 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { LoadSvg } from "../../assets/svg";
+import { LoadSvg } from "../../../assets/svg";
 import styles from "./Button.module.scss";
 
 interface props {
   children: React.ReactNode;
   style?: keyof TStyles;
+  type: keyof TTypes;
   load: boolean;
   onClick?: () => void;
   redirect?: string;
@@ -14,9 +15,15 @@ interface props {
 
 type TStyles = {};
 
+type TTypes = {
+  button: string;
+  submit: string;
+}
+
 export default function Button({
   children,
   style,
+  type,
   load,
   onClick,
   redirect,
@@ -33,7 +40,7 @@ export default function Button({
     <>
       {!load ? (
         <button
-          type="submit"
+          type={type}
           onClick={
             onClick ? onClick : () => redirect && redirectToPage(redirect)
           }

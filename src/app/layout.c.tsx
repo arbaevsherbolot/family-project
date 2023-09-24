@@ -1,17 +1,16 @@
-import Header from "../components/header/Header.component";
-import Footer from "../components/footer/Footer.component";
+import Header from "../components/layout/header/Header.component";
+import Footer from "../components/layout/footer/Footer.component";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface props {
   children: React.ReactNode;
-  session: string;
 }
 
-export default function RootLayoutClient({ children, session }: props) {
+export default function RootLayoutClient({ children }: props) {
   return (
     <>
-      <Header session={session} />
+      <Header />
 
       <main
         style={{
