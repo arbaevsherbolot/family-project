@@ -22,12 +22,15 @@ export async function Login(data: TLogin) {
       }
     );
     const responseData: TLoginResponse = response.data;
+    const session = responseData.access_token;
 
-    setCookie("session", responseData.access_token);
+    if (session) {
+      setCookie("session", session);
 
-    return {
-      success: true,
-    };
+      return {
+        success: true,
+      };
+    }
   } catch (e) {
     const error = {
       error: true,
