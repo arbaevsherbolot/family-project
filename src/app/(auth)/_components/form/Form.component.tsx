@@ -40,6 +40,9 @@ export default function Form() {
         successNotification("Успешный вход в систему");
         setLoading(false);
         router.refresh();
+      } else {
+        successNotification("Сервер временно недоступен");
+        setLoading(false);
       }
     } catch (e) {
       setLoading(false);

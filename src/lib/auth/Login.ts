@@ -24,13 +24,17 @@ export async function Login(data: TLogin) {
     const responseData: TLoginResponse = response.data;
     const session = responseData.access_token;
 
+    let success: boolean = false;
+
     if (session) {
       setCookie("session", session);
 
-      return {
-        success: true,
-      };
+      success = true;
     }
+
+    return {
+      success,
+    };
   } catch (e) {
     const error = {
       error: true,
