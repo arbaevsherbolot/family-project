@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import axios from "axios";
 
 type User = {
   id: number;
@@ -28,20 +29,17 @@ export async function middleware(request: NextRequest) {
 
   if (session) {
     try {
-      const headers = new Headers();
-      headers.append("Authorization", "Bearer " + session);
-
-      const userDataResponse = await fetch(
+      const userDataResponse = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
         {
-          method: "GET",
-          headers: headers,
-          credentials: "include",
+          headers: {
+            Authorization: "Bearer " + session,
+          },
         }
       );
 
-      if (userDataResponse.ok) {
-        const data = await userDataResponse.json();
+      if (userDataResponse) {
+        const data = await userDataResponse.data;
         response.cookies.set("firstName", data.firstName);
         user = data;
       }
