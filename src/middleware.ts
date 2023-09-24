@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
 
 type User = {
   id: number;
@@ -29,17 +28,18 @@ export async function middleware(request: NextRequest) {
 
   if (session) {
     try {
-      const userDataResponse = await axios.get(
+      const headers = new Headers();
+      headers.append("Authorization", "Bearer " + session);
+
+      const userDataResponse = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
         {
-          headers: {
-            Authorization: "Bearer " + session,
-          },
+          headers: headers,
         }
       );
 
-      if (userDataResponse) {
-        const data = await userDataResponse.data;
+      if (userDataResponse.ok) {
+        const data = await userDataResponse.json();
         response.cookies.set("firstName", data.firstName);
         user = data;
       }
@@ -52,37 +52,37 @@ export async function middleware(request: NextRequest) {
     cookies.set("page", pathname);
   }
 
-  if (!isAuth && pathname !== "/login") {
-    const redirectUrl = new URL(
-      pathname === "/" ? `/login` : `/login?next=${pathname}`,
-      request.nextUrl
-    );
-    return NextResponse.redirect(redirectUrl);
-  }
+  // if (!isAuth && pathname !== "/login") {
+  //   const redirectUrl = new URL(
+  //     pathname === "/" ? `/login` : `/login?next=${pathname}`,
+  //     request.nextUrl
+  //   );
+  //   return NextResponse.redirect(redirectUrl);
+  // }
 
-  if (isAuth && ["/login"].includes(pathname)) {
-    const next = searchParams.get("next") || "/";
-    const redirectUrl = new URL(`/redirect?to=${next}`, request.nextUrl);
-    return NextResponse.redirect(redirectUrl);
-  }
+  // if (isAuth && ["/login"].includes(pathname)) {
+  //   const next = searchParams.get("next") || "/";
+  //   const redirectUrl = new URL(`/redirect?to=${next}`, request.nextUrl);
+  //   return NextResponse.redirect(redirectUrl);
+  // }
 
-  if (pathname.startsWith("/search") && searchQuery) {
-    const urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}(\/\S*)?$/i;
-    const url = `https://www.google.com/search?q=${searchQuery}`;
+  // if (pathname.startsWith("/search") && searchQuery) {
+  //   const urlPattern = /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}(\/\S*)?$/i;
+  //   const url = `https://www.google.com/search?q=${searchQuery}`;
 
-    if (urlPattern.test(searchQuery)) {
-      return NextResponse.redirect(searchQuery);
-    }
+  //   if (urlPattern.test(searchQuery)) {
+  //     return NextResponse.redirect(searchQuery);
+  //   }
 
-    return NextResponse.redirect(url);
-  }
+  //   return NextResponse.redirect(url);
+  // }
 
-  if (isAuth && pathname.startsWith("/redirect")) {
-    const to = searchParams.get("to") || "/";
-    const redirectUrl = new URL(to, request.nextUrl);
+  // if (isAuth && pathname.startsWith("/redirect")) {
+  //   const to = searchParams.get("to") || "/";
+  //   const redirectUrl = new URL(to, request.nextUrl);
 
-    return NextResponse.redirect(redirectUrl);
-  }
+  //   return NextResponse.redirect(redirectUrl);
+  // }
 
   return response;
 }
