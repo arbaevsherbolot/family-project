@@ -48,10 +48,6 @@ export async function middleware(request: NextRequest) {
     } catch (_) {}
   }
 
-  if (!user && session) {
-    cookies.delete("session");
-  }
-
   const isAuth = session && user !== undefined;
 
   if (isAuth) {
