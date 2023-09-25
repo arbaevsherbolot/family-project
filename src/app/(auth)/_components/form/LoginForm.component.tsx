@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getCookie } from "cookies-next";
-import { Login } from "../../../../lib/auth/Login";
 import {
   errorNotification,
   successNotification,
 } from "../../../../lib/utils/notification";
+import { signIn } from "next-auth/react";
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./Form.module.scss";
 
@@ -19,7 +19,6 @@ type FormData = {
 
 export default function LoginForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const {
     register,
@@ -30,23 +29,27 @@ export default function LoginForm() {
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmitForm: SubmitHandler<FormData> = async (data) => {
+  const handleSubmitForm: SubmitHandler<FormData> = async (formData) => {
     setLoading(true);
 
-    try {
-      const { success } = await Login(data);
+    const loginData = {
+      ...formData,
+      redirect: false,
+      callbackUrl: "/profile",
+    };
 
-      if (success) {
-        successNotification("Успешный вход в систему");
-        setLoading(false);
-        router.refresh();
-      } else {
-        successNotification("Сервер временно недоступен");
-        setLoading(false);
-      }
+    try {
+      const response = await signIn("credentials", loginData);
+
+      // if (!response?.error) {
+      //   router.push("/profile");
+      // } else {
+      //   errorNotification("Неверное имя или пароль");
+      // }
     } catch (e) {
       //@ts-ignore
-      errorNotification(e.message);
+      errorNotification("Что-то пошло не так");
+      console.error(e);
     } finally {
       setLoading(false);
     }
