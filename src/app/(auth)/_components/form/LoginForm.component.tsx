@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getCookie } from "cookies-next";
 import {
@@ -19,6 +19,8 @@ type FormData = {
 
 export default function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next");
 
   const {
     register,
@@ -35,7 +37,7 @@ export default function LoginForm() {
     const loginData = {
       ...formData,
       redirect: false,
-      callbackUrl: "/profile",
+      callbackUrl: next ? next : "/",
     };
 
     try {
@@ -44,7 +46,7 @@ export default function LoginForm() {
 
       if (!response?.error) {
         successNotification("Успешный вход в систему");
-        router.push("/profile");
+        router.push(next ? next : "/");
       } else {
         errorNotification("Неверное электронная почта или пароль");
       }
