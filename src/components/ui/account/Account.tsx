@@ -14,7 +14,9 @@ export default function Account() {
   const { data } = useSession();
   const user = data?.user;
 
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
 
   const pathname = usePathname();
   const router = useRouter();
