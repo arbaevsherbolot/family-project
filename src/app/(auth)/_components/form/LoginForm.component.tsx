@@ -40,6 +40,7 @@ export default function LoginForm() {
 
     try {
       const response = await signIn("credentials", loginData);
+      console.log(response);
 
       if (!response?.error) {
         successNotification("Успешный вход в систему");
