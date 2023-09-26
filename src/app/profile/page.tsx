@@ -37,7 +37,7 @@ export default async function Profile() {
     }
   );
 
-  const user = await response.json();
+  const user: User = await response.json();
 
   if (!user) return null;
 

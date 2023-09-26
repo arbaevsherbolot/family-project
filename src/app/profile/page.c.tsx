@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Profile.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "MODERATOR";
@@ -31,7 +32,31 @@ interface props {
 export default function ProfileClient({ user }: props) {
   return (
     <>
-      <div className={styles.page_wrapper}>{user.firstName}</div>
+      <div className={styles.page_wrapper}>
+        <div className={styles.profile_wrapper}>
+          <div className={styles.user}>
+            {user.photo && (
+              <div className={styles.image_wrapper}>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`}
+                  alt={`${user.firstName} ${user.lastName}`}
+                  width={120}
+                  height={120}
+                  className={styles.img}
+                />
+              </div>
+            )}
+
+            <div className={styles.data}>
+              <h2 className={styles.name}>
+                {user.firstName} {user.lastName}
+              </h2>
+
+              <span className={styles.email}>{user.email}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

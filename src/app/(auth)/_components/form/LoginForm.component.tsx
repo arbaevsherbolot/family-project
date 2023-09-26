@@ -13,7 +13,7 @@ import Button from "../../../../components/ui/button/Button.component";
 import styles from "./Form.module.scss";
 
 type FormData = {
-  firstName: string;
+  email: string;
   password: string;
 };
 
@@ -41,11 +41,12 @@ export default function LoginForm() {
     try {
       const response = await signIn("credentials", loginData);
 
-      // if (!response?.error) {
-      //   router.push("/profile");
-      // } else {
-      //   errorNotification("Неверное имя или пароль");
-      // }
+      if (!response?.error) {
+        successNotification("Успешный вход в систему");
+        router.push("/profile");
+      } else {
+        errorNotification("Неверное электронная почта или пароль");
+      }
     } catch (e) {
       //@ts-ignore
       errorNotification("Что-то пошло не так");
@@ -56,10 +57,10 @@ export default function LoginForm() {
   };
 
   useEffect(() => {
-    const cookieFirstName = getCookie("firstName");
+    const cookieEmail = getCookie("email");
 
-    if (cookieFirstName) {
-      setValue("firstName", cookieFirstName);
+    if (cookieEmail) {
+      setValue("email", cookieEmail);
     }
   }, []);
 
@@ -74,22 +75,18 @@ export default function LoginForm() {
               <input
                 type="text"
                 className={styles.input}
-                placeholder="Имя"
-                {...register("firstName", {
-                  required: "Имя обязательно",
-                  maxLength: {
-                    value: 50,
-                    message: "Имя не может превышать 50 символов",
-                  },
+                placeholder="Электронная почта"
+                {...register("email", {
+                  required: "Требуется электронная почта",
                   pattern: {
-                    value: /^[a-zA-Zа-яА-Я\s]+$/,
-                    message: "Имя может содержать только буквы",
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "Неверный адрес электронной почты",
                   },
                 })}
               />
 
-              {errors.firstName && (
-                <span className={styles.error}>{errors.firstName.message}</span>
+              {errors.email && (
+                <span className={styles.error}>{errors.email.message}</span>
               )}
             </div>
 

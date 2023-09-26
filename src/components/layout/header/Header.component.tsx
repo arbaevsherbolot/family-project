@@ -4,10 +4,15 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { links } from "../../../data/links";
 import { ArbaevsLogoSvg } from "../../../assets/svg/index";
+import { useSession } from "next-auth/react";
 import Button from "../../../components/ui/button/Button.component";
 import styles from "./Header.module.scss";
+import Account from "@/components/ui/account/Account";
 
-export default async function Header() {
+export default function Header() {
+  const { data } = useSession();
+  const user = data?.user;
+
   const pathname = usePathname();
 
   return (
@@ -32,6 +37,8 @@ export default async function Header() {
               </Link>
             ))}
           </div>
+
+          {user && <Account />}
         </div>
       </header>
     </>

@@ -5,3 +5,6 @@ export { default as ShareSvg } from "./share.svg";
 export { default as CloseSvg } from "./close.svg";
 export { default as LoadSvg } from "./load.svg";
 export { default as ArbaevsLogoSvg } from "./logo.svg";
+export { default as ArrowSvg } from "./arrow.svg";
+export { default as LogoutSvg } from "./logout.svg";
+export { default as VerifySvg } from "./logout.svg";

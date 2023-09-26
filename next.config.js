@@ -5,6 +5,36 @@ const nextConfig = {
     serverActions: true,
   },
 
+  images: {
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "nest-server-api.vercel.app",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+        port: "",
+        pathname: "/*/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "888",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "888",
+        pathname: "/**",
+      },
+    ],
+  },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

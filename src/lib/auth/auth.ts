@@ -4,13 +4,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: "Log In",
 
       credentials: {
-        firstName: {
-          label: "First Name",
+        email: {
+          label: "Email",
           type: "text",
-          placeholder: "First Name",
+          placeholder: "Email",
         },
 
         password: {
@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        if (!credentials?.firstName || !credentials?.password) return null;
+        if (!credentials?.email || !credentials?.password) return null;
 
         try {
           const response = await fetch(
@@ -34,6 +34,8 @@ export const authOptions: NextAuthOptions = {
               },
             }
           );
+
+          console.log(response);
 
           const responseData = await response.json();
 
