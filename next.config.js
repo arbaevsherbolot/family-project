@@ -32,6 +32,12 @@ const nextConfig = {
         port: "888",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "iotcdn.oss-ap-southeast-1.aliyuncs.com",
+        port: "",
+        pathname: "/**/*",
+      },
     ],
   },
 

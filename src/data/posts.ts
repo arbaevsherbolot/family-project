@@ -17,7 +17,7 @@ export const posts: PostType[] = [
   {
     id: 1,
     cover:
-      "https://res.cloudinary.com/dbtcocjdk/image/fetch/f_auto,dpr_auto,w_auto/https://storage.jukeboxprint.com/s/images/Jukebox-Influential-Fonts-00-Header-Collage-b.jpg",
+      "https://iotcdn.oss-ap-southeast-1.aliyuncs.com/styles/a_share_fb/oss/2020-11/Family-Silhouette-3.jpg",
     date: "15 September 2023",
     time: "13 minutes",
     title: "My Family",

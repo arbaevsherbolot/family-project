@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { errorNotification } from "../../../lib/utils/notification";
 import { menuItems } from "../../../data/account-menu";
@@ -11,19 +11,11 @@ import { ArrowSvg, LogoutSvg, LoadSvg, VerifySvg } from "../../../assets/svg";
 import styles from "./Account.module.scss";
 
 export default function Account() {
-  const { data } = useSession();
-  const user = data?.user;
-
-  if (!user) {
-    return null;
-  }
-
   const pathname = usePathname();
   const router = useRouter();
 
-  const [loading, setLoading] = useState(false);
-  const [isClose, setIsClose] = useState(true);
-  const close = isClose ? true : false;
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isClose, setIsClose] = useState<boolean>(true);
 
   const accountRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +48,13 @@ export default function Account() {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  const { data } = useSession();
+  const user = data?.user;
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <>

@@ -10,10 +10,10 @@ import styles from "./Header.module.scss";
 import Account from "@/components/ui/account/Account";
 
 export default function Header() {
+  const pathname = usePathname();
+
   const { data } = useSession();
   const user = data?.user;
-
-  const pathname = usePathname();
 
   return (
     <>

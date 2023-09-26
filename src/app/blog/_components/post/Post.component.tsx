@@ -6,6 +6,7 @@ import { PointsSvg } from "../../../../assets/svg";
 import { menuItems } from "../../../../data/menu";
 import Modal from "../../../../components/ui/modal/Modal.component";
 import styles from "./Post.module.scss";
+import Image from "next/image";
 
 interface props {
   post: PostType;
@@ -49,9 +50,11 @@ export default function Post({ post }: props) {
           <div className={styles.head}>
             <div className={styles.author}>
               <div className={styles.logo_wrapper}>
-                <img
+                <Image
                   src={post.author.logo}
                   alt={`${post.author.firstName} ${post.author.lastName}`}
+                  width={36}
+                  height={36}
                   className={styles.logo}
                 />
               </div>
@@ -86,7 +89,13 @@ export default function Post({ post }: props) {
           </div>
 
           <div className={styles.cover_wrapper} onClick={handleOpenModal}>
-            <img src={post.cover} alt={post.title} className={styles.cover} />
+            <Image
+              src={post.cover}
+              alt={post.title}
+              width={500}
+              height={500}
+              className={styles.cover}
+            />
           </div>
 
           <div className={styles.tags}>
@@ -130,9 +139,11 @@ export default function Post({ post }: props) {
                     width: "40px",
                     height: "40px",
                   }}>
-                  <img
+                  <Image
                     src={post.author.logo}
                     alt={`${post.author.firstName} ${post.author.lastName}`}
+                    width={36}
+                    height={36}
                     className={styles.logo}
                   />
                 </div>
@@ -172,7 +183,13 @@ export default function Post({ post }: props) {
               style={{
                 height: "450px",
               }}>
-              <img src={post.cover} alt={post.title} className={styles.cover} />
+              <Image
+                src={post.cover}
+                alt={post.title}
+                width={800}
+                height={500}
+                className={styles.cover}
+              />
             </div>
 
             <div className={styles.text}>
@@ -192,7 +209,13 @@ export default function Post({ post }: props) {
               style={{
                 height: "450px",
               }}>
-              <img src={post.cover} alt={post.title} className={styles.cover} />
+              <Image
+                src={post.cover}
+                alt={post.title}
+                width={800}
+                height={500}
+                className={styles.cover}
+              />
             </div>
 
             <div className={styles.text}>
@@ -208,7 +231,13 @@ export default function Post({ post }: props) {
               style={{
                 height: "450px",
               }}>
-              <img src={post.cover} alt={post.title} className={styles.cover} />
+              <Image
+                src={post.cover}
+                alt={post.title}
+                width={500}
+                height={500}
+                className={styles.cover}
+              />
             </div>
 
             <div className={styles.text}>
