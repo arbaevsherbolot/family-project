@@ -3,7 +3,7 @@ import { getToken } from "next-auth/jwt";
 
 export { default } from "next-auth/middleware";
 
-type UserRole = "USER" | "ADMIN" | "MODERATOR";
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;
@@ -30,11 +30,15 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
   const searchParams = new URLSearchParams(url.searchParams);
+  const cookies = response.cookies;
   const token = await getToken({ req: request });
 
   let user: User | undefined;
 
-  if (token?.user) user = token?.user;
+  if (token?.user) {
+    user = token?.user;
+    cookies.set("email", user.email);
+  }
 
   if (user && pathname.startsWith("/login")) {
     const redirectUrl = new URL("/", url);

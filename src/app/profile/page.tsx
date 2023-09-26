@@ -1,7 +1,7 @@
 import { useUserSession } from "../../hooks/useUserSession";
 import ProfileClient from "./page.c";
 
-type UserRole = "USER" | "ADMIN" | "MODERATOR";
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;

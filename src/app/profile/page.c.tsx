@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "./Profile.module.scss";
 
-type UserRole = "USER" | "ADMIN" | "MODERATOR";
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;

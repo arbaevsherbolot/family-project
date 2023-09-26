@@ -6,7 +6,7 @@ type Tokens = {
   refresh_token: string;
 };
 
-type UserRole = "USER" | "ADMIN" | "MODERATOR";
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;

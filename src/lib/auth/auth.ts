@@ -35,8 +35,6 @@ export const authOptions: NextAuthOptions = {
             }
           );
 
-          console.log(response);
-
           const responseData = await response.json();
 
           if (response.status === 401) {
