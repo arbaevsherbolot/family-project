@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { errorNotification } from "@/lib/utils/notification";
+import { errorNotification } from "../../../lib/utils/notification";
+import { menuItems } from "../../../data/account-menu";
 import { ArrowSvg, LogoutSvg, LoadSvg, VerifySvg } from "../../../assets/svg";
 import styles from "./Account.module.scss";
 
@@ -23,13 +24,6 @@ export default function Account() {
   const close = isClose ? true : false;
 
   const accountRef = useRef<HTMLDivElement>(null);
-
-  const listItems = [
-    {
-      title: "Профиль",
-      path: "/profile",
-    },
-  ];
 
   const handleLogout = async () => {
     setLoading(true);
@@ -110,7 +104,7 @@ export default function Account() {
               {user.email}
             </span>
 
-            {listItems.map((item, i) => (
+            {menuItems.map((item, i) => (
               <Link
                 key={i}
                 href={item.path}
@@ -120,7 +114,7 @@ export default function Account() {
                     ? `${styles.item} ${styles.active}`
                     : styles.item
                 }>
-                {item.title}
+                {item.name}
               </Link>
             ))}
           </div>

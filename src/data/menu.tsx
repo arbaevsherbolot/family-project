@@ -15,7 +15,7 @@ export const menuItems: ItemType[] = [
         }}
       />
     ),
-    name: "Settings",
+    name: "Настройки",
   },
   {
     icon: (
@@ -25,7 +25,7 @@ export const menuItems: ItemType[] = [
         }}
       />
     ),
-    name: "Copy",
+    name: "Копировать текст",
   },
   {
     icon: (
@@ -35,6 +35,6 @@ export const menuItems: ItemType[] = [
         }}
       />
     ),
-    name: "Share",
+    name: "Поделиться",
   },
 ];

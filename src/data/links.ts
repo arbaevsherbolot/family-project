@@ -6,6 +6,6 @@ export type LinkType = {
 export const links: LinkType[] = [
   {
     path: "/blog",
-    name: "Blog",
+    name: "Блог",
   },
 ];
