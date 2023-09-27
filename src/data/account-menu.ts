@@ -8,4 +8,8 @@ export const menuItems: ItemType[] = [
     name: "Профиль",
     path: "/profile",
   },
+  {
+    name: "Мои фото",
+    path: "/profile/photos",
+  },
 ];
