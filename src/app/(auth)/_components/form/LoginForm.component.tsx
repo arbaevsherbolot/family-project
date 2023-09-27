@@ -47,7 +47,7 @@ export default function LoginForm() {
         successNotification("Успешный вход в систему");
         router.push(next ? next : "/");
       } else {
-        errorNotification("Неверное электронная почта или пароль");
+        errorNotification(response?.error.replace("Error: ", ""));
       }
     } catch (e) {
       //@ts-ignore

@@ -38,15 +38,15 @@ export const authOptions: NextAuthOptions = {
           const responseData = await response.json();
 
           if (response.status === 401) {
-            return null;
+            throw new Error(responseData.message);
           }
 
-          if (!responseData) return null;
+          if (!responseData) throw new Error('Ошибка сервера');
 
           return responseData;
         } catch (e) {
-          console.error(e);
-          return null;
+          //@ts-ignore
+          throw new Error(e);
         }
       },
     }),
