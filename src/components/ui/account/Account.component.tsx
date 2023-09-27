@@ -72,7 +72,7 @@ export default function Account() {
               }
               width={38}
               height={38}
-              alt="User"
+              alt={`${user.firstName} ${user.lastName}`}
               style={{
                 width: "100%",
                 height: "100%",
@@ -96,7 +96,7 @@ export default function Account() {
         <div
           onClick={(e) => e.stopPropagation()}
           className={
-            !close
+            !isClose
               ? `${styles.account_menu} ${styles.active}`
               : styles.account_menu
           }>
