@@ -45,7 +45,7 @@ export default function LoginForm() {
 
       if (!response?.error) {
         successNotification("Успешный вход в систему");
-        router.refresh();
+        router.push(next ? next : "/");
       } else {
         errorNotification(response?.error.replace("Error: ", ""));
       }

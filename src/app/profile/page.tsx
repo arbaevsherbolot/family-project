@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { useUserSession } from "../../hooks/useUserSession";
 import ProfileClient from "./page.c";
 
@@ -21,6 +22,10 @@ type User = {
   photo?: string | null;
   phone?: string | null;
   refreshToken?: string | null;
+};
+
+export const metadata: Metadata = {
+  title: "Profile",
 };
 
 export default async function Profile() {

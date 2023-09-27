@@ -50,7 +50,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (!user && ["/profile", "/blog", "/gallery"].includes(pathname)) {
+  if (
+    !user &&
+    ["/profile", "/profile/photos", "/blog", "/gallery"].includes(pathname)
+  ) {
     const redirectUrl = new URL(`/login?next=${pathname}`, url);
     return NextResponse.redirect(redirectUrl);
   }
