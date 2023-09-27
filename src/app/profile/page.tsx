@@ -24,22 +24,22 @@ type User = {
 };
 
 export default async function Profile() {
-  // const tokens = await useUserSession();
+  const tokens = await useUserSession();
 
-  // const response = await fetch(
-  //   `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
-  //   {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${tokens?.access_token}`,
-  //     },
-  //   }
-  // );
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tokens?.access_token}`,
+      },
+    }
+  );
 
-  // const user: User = await response.json();
+  const user: User = await response.json();
 
-  // if (!user) return null;
+  if (!user) return null;
 
-  return <ProfileClient />;
+  return <ProfileClient user={user} />;
 }

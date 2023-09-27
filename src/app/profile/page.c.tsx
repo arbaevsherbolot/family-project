@@ -1,17 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 import styles from "./Profile.module.scss";
 
-export default function ProfileClient() {
-  const { data } = useSession();
-  const user = data?.user;
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
-  if (!user) {
-    return null;
-  }
+type User = {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  isVerified: boolean;
+  email: string;
+  password: string;
+  resetPasswordSecret?: string | null;
+  role: UserRole;
+  requests: number;
+  lastRequest?: Date | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  bio?: string | null;
+  photo?: string | null;
+  phone?: string | null;
+  refreshToken?: string | null;
+};
 
+interface props {
+  user: User;
+}
+
+export default function ProfileClient({ user }: props) {
   return (
     <>
       <div className={styles.page_wrapper}>

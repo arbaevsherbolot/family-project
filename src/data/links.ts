@@ -8,4 +8,8 @@ export const links: LinkType[] = [
     path: "/blog",
     name: "Блог",
   },
+  {
+    path: "/gallery",
+    name: "Галерея",
+  },
 ];

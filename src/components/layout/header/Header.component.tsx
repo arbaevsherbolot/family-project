@@ -19,23 +19,25 @@ export default function Header() {
     <>
       <header className={styles.header}>
         <div className={styles.navbar}>
-          <Link href="/">
-            <ArbaevsLogoSvg className={styles.logo} />
-          </Link>
+          <div className={styles.left}>
+            <Link href="/">
+              <ArbaevsLogoSvg className={styles.logo} />
+            </Link>
 
-          <div className={styles.links}>
-            {links.map((link, i) => (
-              <Link
-                key={i}
-                href={link.path}
-                className={
-                  pathname === link.path
-                    ? `${styles.link} ${styles.active}`
-                    : styles.link
-                }>
-                {link.name}
-              </Link>
-            ))}
+            <div className={styles.links}>
+              {links.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.path}
+                  className={
+                    pathname === link.path
+                      ? `${styles.link} ${styles.active}`
+                      : styles.link
+                  }>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {user && <Account />}

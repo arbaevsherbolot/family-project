@@ -45,10 +45,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  if (
-    !user &&
-    (pathname.startsWith("/blog") || pathname.startsWith("/profile"))
-  ) {
+  if (!user && ["/profile", "/blog", "/gallery"].includes(pathname)) {
     const redirectUrl = new URL(`/login?next=${pathname}`, url);
     return NextResponse.redirect(redirectUrl);
   }
@@ -57,5 +54,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/profile", "/blog", "/login"],
+  matcher: ["/profile", "/blog", "/gallery", "/login"],
 };
