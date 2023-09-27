@@ -5,9 +5,9 @@ import Link from "next/link";
 import { links } from "../../../data/links";
 import { ArbaevsLogoSvg } from "../../../assets/svg/index";
 import { useSession } from "next-auth/react";
+import Account from "../../../components/ui/account/Account.component";
 import Button from "../../../components/ui/button/Button.component";
 import styles from "./Header.module.scss";
-import Account from "@/components/ui/account/Account";
 
 export default function Header() {
   const pathname = usePathname();

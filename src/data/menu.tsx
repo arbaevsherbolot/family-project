@@ -25,7 +25,7 @@ export const menuItems: ItemType[] = [
         }}
       />
     ),
-    name: "Копировать текст",
+    name: "Копировать",
   },
   {
     icon: (
