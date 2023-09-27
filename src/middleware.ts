@@ -32,6 +32,7 @@ export async function middleware(request: NextRequest) {
   const searchParams = new URLSearchParams(url.searchParams);
   const cookies = response.cookies;
   const token = await getToken({ req: request });
+  const page = request.cookies.get("page")?.value;
 
   let user: User | undefined;
 
@@ -40,8 +41,12 @@ export async function middleware(request: NextRequest) {
     cookies.set("email", user.email);
   }
 
+  if (user) {
+    cookies.set("page", pathname);
+  }
+
   if (user && pathname.startsWith("/login")) {
-    const redirectUrl = new URL("/", url);
+    const redirectUrl = new URL(page ? page : "/", url);
     return NextResponse.redirect(redirectUrl);
   }
 
