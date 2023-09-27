@@ -20,8 +20,8 @@ type User = {
   role: UserRole;
   requests: number;
   lastRequest?: Date | null;
-  firstName?: string | null;
-  lastName?: string | null;
+  firstName: string | null;
+  lastName: string | null;
   bio?: string | null;
   photo?: string | null;
   phone?: string | null;
