@@ -31,6 +31,7 @@ export const authOptions: NextAuthOptions = {
               body: JSON.stringify(credentials),
               headers: {
                 "Content-Type": "application/json",
+                baseurl: `${process.env.NEXT_PUBLIC_API_URL}`,
               },
             }
           );
@@ -41,7 +42,7 @@ export const authOptions: NextAuthOptions = {
             throw new Error(responseData.message);
           }
 
-          if (!responseData) throw new Error('Ошибка сервера');
+          if (!responseData) throw new Error("Ошибка сервера");
 
           return responseData;
         } catch (e) {
