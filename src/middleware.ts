@@ -43,6 +43,8 @@ export async function middleware(request: NextRequest) {
 
   if (user) {
     cookies.set("page", pathname);
+  } else {
+    request.cookies.getAll().map((cookie) => cookies.delete(cookie.name));
   }
 
   if (user && pathname.startsWith("/login")) {
