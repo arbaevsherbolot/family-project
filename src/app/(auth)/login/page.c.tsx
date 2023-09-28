@@ -1,7 +1,7 @@
 "use client";
 
-import styles from "../Auth.module.scss";
 import LoginForm from "../_components/form/LoginForm.component";
+import styles from "../Auth.module.scss";
 
 export default function LoginClient() {
   return (
