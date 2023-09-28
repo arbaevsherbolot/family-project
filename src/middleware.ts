@@ -61,7 +61,7 @@ export async function middleware(request: NextRequest) {
         request.cookies.getAll().map((cookie) => cookies.delete(cookie.name));
       }
 
-      user = responseData.user;
+      user = responseData;
     } catch (_) {}
   }
 
