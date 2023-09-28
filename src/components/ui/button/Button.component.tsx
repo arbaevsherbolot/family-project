@@ -18,7 +18,7 @@ type TStyles = {};
 type TTypes = {
   button: string;
   submit: string;
-}
+};
 
 export default function Button({
   children,
@@ -31,9 +31,7 @@ export default function Button({
   const router = useRouter();
 
   const redirectToPage = (path: string) => {
-    if (path === "/login?redirect=/") {
-      router.push("/login");
-    } else router.push(path);
+    router.push(path);
   };
 
   return (

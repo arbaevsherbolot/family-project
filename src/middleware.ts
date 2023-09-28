@@ -57,9 +57,9 @@ export async function middleware(request: NextRequest) {
         user = responseData;
         responseCookies.set("email", responseData.email);
       } else {
-        requestCookies
-          .getAll()
-          .map((cookie) => responseCookies.delete(cookie.name));
+        requestCookies.getAll().map((cookie) => {
+          if (cookie.name !== "email") responseCookies.delete(cookie.name);
+        });
       }
     } catch (_) {}
   }
@@ -67,7 +67,7 @@ export async function middleware(request: NextRequest) {
   const isAuth = user !== undefined;
 
   if (isAuth && pathname.startsWith("/login")) {
-    const redirectUrl = new URL(next ? next : "/", url);
+    const redirectUrl = new URL(next, url);
     return NextResponse.redirect(redirectUrl);
   }
 

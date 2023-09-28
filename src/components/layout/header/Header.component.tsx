@@ -40,7 +40,15 @@ export default function Header() {
             </div>
           </div>
 
-          {user && <Account />}
+          <div className={styles.right}>
+            {user ? (
+              <Account />
+            ) : (
+              <Button type="button" load={false} redirect="/login">
+                Log In
+              </Button>
+            )}
+          </div>
         </div>
       </header>
     </>
