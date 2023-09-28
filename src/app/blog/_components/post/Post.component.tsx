@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PostType } from "../../../../data/posts";
 import { PointsSvg } from "../../../../assets/svg";
 import { menuItems } from "../../../../data/menu";

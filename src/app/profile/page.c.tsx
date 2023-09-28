@@ -30,7 +30,6 @@ interface props {
 }
 
 export default function ProfileClient({ user }: props) {
-  console.log(`${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`);
   return (
     <>
       <div className={styles.page_wrapper}>

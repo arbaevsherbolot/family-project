@@ -30,16 +30,12 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
   const searchParams = new URLSearchParams(url.searchParams);
-  const cookies = response.cookies;
+  const responseCookies = response.cookies;
+  const requestCookies = request.cookies;
   const token = await getToken({ req: request });
-  const page = request.cookies.get("page")?.value;
+  const next = searchParams.get("next") || "/";
 
   let user: User | undefined;
-
-  if (user) {
-    cookies.set("page", pathname);
-    cookies.set("email", user.email);
-  }
 
   if (token?.tokens.access_token) {
     try {
@@ -57,21 +53,26 @@ export async function middleware(request: NextRequest) {
 
       const responseData = await response.json();
 
-      if (responseData.statusCode === 401) {
-        request.cookies.getAll().map((cookie) => cookies.delete(cookie.name));
+      if (responseData.statusCode !== 401) {
+        user = responseData;
+        responseCookies.set("email", responseData.email);
+      } else {
+        requestCookies
+          .getAll()
+          .map((cookie) => responseCookies.delete(cookie.name));
       }
-
-      user = responseData;
     } catch (_) {}
   }
 
-  if (user && pathname.startsWith("/login")) {
-    const redirectUrl = new URL(page ? page : "/", url);
+  const isAuth = user !== undefined;
+
+  if (isAuth && pathname.startsWith("/login")) {
+    const redirectUrl = new URL(next ? next : "/", url);
     return NextResponse.redirect(redirectUrl);
   }
 
   if (
-    !user &&
+    !isAuth &&
     ["/profile", "/profile/photos", "/blog", "/gallery"].includes(pathname)
   ) {
     const redirectUrl = new URL(`/login?next=${pathname}`, url);

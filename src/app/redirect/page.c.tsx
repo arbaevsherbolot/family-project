@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import styles from "./Redirect.module.scss";
 
 export default function RedirectClient() {
   useEffect(() => {
@@ -9,7 +10,9 @@ export default function RedirectClient() {
 
   return (
     <>
-      <span>Redirecting...</span>
+      <div className={styles.page_wrapper}>
+        <span className={styles.span}>Переадресация...</span>
+      </div>
     </>
   );
 }

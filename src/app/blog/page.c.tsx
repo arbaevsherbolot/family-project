@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { posts } from "../../data/posts";
 import Post from "./_components/post/Post.component";
 import styles from "./page.module.scss";

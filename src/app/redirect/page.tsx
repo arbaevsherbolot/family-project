@@ -6,7 +6,7 @@ interface props {
 
 export async function generateMetadata({ searchParams }: props) {
   return {
-    title: `Redirecting to ${searchParams.to || "..."}`,
+    title: `Переадресация на ${searchParams.to || "..."}`,
   };
 }
 
