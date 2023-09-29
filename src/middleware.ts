@@ -58,7 +58,9 @@ export async function middleware(request: NextRequest) {
         responseCookies.set("email", responseData.email);
       } else {
         requestCookies.getAll().map((cookie) => {
-          if (cookie.name !== "email") responseCookies.delete(cookie.name);
+          if (cookie.name !== "email") {
+            responseCookies.delete(cookie.name);
+          }
         });
       }
     } catch (_) {}
