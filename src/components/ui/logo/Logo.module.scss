@@ -1,0 +1,10 @@
+.logo_wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

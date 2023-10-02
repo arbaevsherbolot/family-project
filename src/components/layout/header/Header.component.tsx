@@ -45,7 +45,7 @@ export default function Header() {
               <Account />
             ) : (
               <Button type="button" load={false} redirect="/login">
-                Log In
+                Войти
               </Button>
             )}
           </div>

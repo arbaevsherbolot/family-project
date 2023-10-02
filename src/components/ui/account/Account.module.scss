@@ -54,21 +54,6 @@
       gap: 0.7rem;
     }
 
-    .logo {
-      width: 38px;
-      height: 38px;
-
-      background: #dbdbde;
-      border-radius: 5rem;
-
-      overflow: hidden;
-
-      @media (max-width: 1065px) {
-        width: 36px;
-        height: 36px;
-      }
-    }
-
     .user {
       display: none;
 
@@ -193,7 +178,7 @@
         }
 
         &.active {
-          background: #5990ff;
+          background: #5340ff;
           color: #fff;
         }
 

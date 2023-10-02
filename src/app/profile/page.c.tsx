@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Logo from "../../components/ui/logo/Logo.component";
 import styles from "./Profile.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -35,19 +35,16 @@ export default function ProfileClient({ user }: props) {
       <div className={styles.page_wrapper}>
         <div className={styles.profile_wrapper}>
           <div className={styles.user}>
-            <div className={styles.image_wrapper}>
-              <Image
-                src={
-                  user.photo
-                    ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
-                    : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-                }
-                alt={`${user.firstName} ${user.lastName}`}
-                width={120}
-                height={120}
-                className={styles.img}
-              />
-            </div>
+            <Logo
+              src={
+                user.photo
+                  ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
+                  : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+              }
+              alt={`${user.firstName} ${user.lastName}`}
+              width={120}
+              height={120}
+            />
 
             <div className={styles.data}>
               <h2 className={styles.name}>

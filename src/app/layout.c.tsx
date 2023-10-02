@@ -1,5 +1,8 @@
+"use client";
+
 import Header from "../components/layout/header/Header.component";
 import Footer from "../components/layout/footer/Footer.component";
+import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,6 +14,7 @@ export default function RootLayoutClient({ children }: props) {
   return (
     <>
       <Header />
+      <NextNProgress color="red" />
 
       <main
         style={{

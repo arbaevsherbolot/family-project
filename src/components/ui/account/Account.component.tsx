@@ -2,11 +2,11 @@
 
 import React, { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { errorNotification } from "../../../lib/utils/notification";
 import { menuItems } from "../../../data/account-menu";
+import Logo from "../logo/Logo.component";
 import { ArrowSvg, LogoutSvg, LoadSvg, VerifySvg } from "../../../assets/svg";
 import styles from "./Account.module.scss";
 
@@ -63,23 +63,16 @@ export default function Account() {
         className={styles.account_container}
         onClick={() => setIsClose(!isClose)}>
         <div className={styles.account_data}>
-          <div className={styles.logo}>
-            <Image
-              src={
-                user.photo
-                  ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
-                  : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-              }
-              width={38}
-              height={38}
-              alt={`${user.firstName} ${user.lastName}`}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          <Logo
+            src={
+              user.photo
+                ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
+                : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+            }
+            width={38}
+            height={38}
+            alt={`${user.firstName} ${user.lastName}`}
+          />
 
           <div className={styles.user}>
             <h3 className={styles.name}>
