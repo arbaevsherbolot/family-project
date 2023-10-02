@@ -56,7 +56,7 @@
           width: 100%;
           padding: 0.95rem 1rem;
 
-          outline: 2.5px solid transparent;
+          outline: 3.2px solid transparent;
 
           background: #ffffff;
           border: 0.8px solid #dbdbde;
@@ -77,9 +77,10 @@
           }
 
           &:focus {
-            border-width: 1px;
-            border-color: #5340ffb1;
-            outline-color: #5340ff4f;
+            // border-width: 1px;
+            border-color: #5340ff7f;
+            // box-shadow: 0 0 10px #5340ff4f;
+            // outline-color: #5340ff2f;
 
             &::placeholder {
               color: rgba(55, 53, 47, 0.38);
@@ -101,7 +102,7 @@
           background-color: #ff484813;
           border-radius: 0.3rem;
 
-          color: #ff7474;
+          color: #ff3f2a;
           font-size: 0.8rem;
 
           display: flex;
