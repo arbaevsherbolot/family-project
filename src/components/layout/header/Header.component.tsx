@@ -6,7 +6,6 @@ import { links } from "../../../data/links";
 import { ArbaevsLogoSvg } from "../../../assets/svg/index";
 import { useSession } from "next-auth/react";
 import Account from "../../../components/ui/account/Account.component";
-import Button from "../../../components/ui/button/Button.component";
 import styles from "./Header.module.scss";
 
 export default function Header() {
@@ -40,15 +39,7 @@ export default function Header() {
             </div>
           </div>
 
-          <div className={styles.right}>
-            {user ? (
-              <Account />
-            ) : (
-              <Button type="button" load={false} redirect="/login">
-                Войти
-              </Button>
-            )}
-          </div>
+          <div className={styles.right}>{user && <Account />}</div>
         </div>
       </header>
     </>

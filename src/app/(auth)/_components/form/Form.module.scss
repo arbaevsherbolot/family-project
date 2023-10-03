@@ -87,6 +87,18 @@
             }
           }
 
+          &.load {
+            background: #f0f0f0;
+
+            &:hover {
+              border-color: #dbdbde;
+            }
+
+            &::placeholder {
+              color: rgba(55, 53, 47, 0.431);
+            }
+          }
+
           &.password {
             letter-spacing: 0.38rem;
 

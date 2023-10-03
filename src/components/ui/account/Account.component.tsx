@@ -3,7 +3,8 @@
 import React, { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useSignOut } from "../../../hooks/useSignOut";
 import { errorNotification } from "../../../lib/utils/notification";
 import { menuItems } from "../../../data/account-menu";
 import Logo from "../logo/Logo.component";
@@ -23,7 +24,7 @@ export default function Account() {
     setLoading(true);
 
     try {
-      await signOut();
+      await useSignOut();
       router.push("/login");
     } catch (e) {
       errorNotification("Ошибка сервера, невозможно выйти из системы");

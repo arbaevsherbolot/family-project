@@ -38,7 +38,7 @@ export const authOptions: NextAuthOptions = {
 
           const responseData = await response.json();
 
-          if (response.status === 401) {
+          if (response.status !== 200) {
             throw new Error(responseData.message);
           }
 

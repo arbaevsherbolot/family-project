@@ -76,7 +76,10 @@ export default function LoginForm() {
             <div className={styles.input_container}>
               <input
                 type="text"
-                className={styles.input}
+                disabled={loading}
+                className={
+                  loading ? `${styles.input} ${styles.load}` : styles.input
+                }
                 placeholder="Электронная почта"
                 {...register("email", {
                   required: "Требуется электронная почта",
@@ -95,8 +98,13 @@ export default function LoginForm() {
             <div className={styles.input_container}>
               <input
                 type="password"
+                disabled={loading}
                 autoComplete="off"
-                className={`${styles.input} ${styles.password}`}
+                className={
+                  loading
+                    ? `${styles.input} ${styles.load} ${styles.password}`
+                    : `${styles.input} ${styles.password}`
+                }
                 placeholder="Пароль"
                 {...register("password", {
                   required: "Пароль обязателен",
