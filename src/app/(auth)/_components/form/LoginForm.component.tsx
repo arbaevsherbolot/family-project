@@ -74,13 +74,15 @@ export default function LoginForm() {
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
+              <span className={styles.label}>Электронная почта</span>
+
               <input
                 type="text"
                 disabled={loading}
                 className={
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
-                placeholder="Электронная почта"
+                placeholder="sherbolot@wedevx.co"
                 {...register("email", {
                   required: "Требуется электронная почта",
                   pattern: {
@@ -96,6 +98,8 @@ export default function LoginForm() {
             </div>
 
             <div className={styles.input_container}>
+              <span className={styles.label}>Пароль</span>
+
               <input
                 type="password"
                 disabled={loading}
@@ -105,7 +109,7 @@ export default function LoginForm() {
                     ? `${styles.input} ${styles.load} ${styles.password}`
                     : `${styles.input} ${styles.password}`
                 }
-                placeholder="Пароль"
+                placeholder="123456"
                 {...register("password", {
                   required: "Пароль обязателен",
                   minLength: {

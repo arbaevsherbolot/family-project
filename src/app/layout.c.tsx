@@ -2,9 +2,7 @@
 
 import Header from "../components/layout/header/Header.component";
 import Footer from "../components/layout/footer/Footer.component";
-import NextNProgress from "nextjs-progressbar";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "sonner";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
@@ -36,8 +34,7 @@ interface props {
 export default function RootLayoutClient({ children, user }: props) {
   return (
     <>
-      <Header user={user}/>
-      <NextNProgress color="red" />
+      <Header user={user} />
 
       <main
         style={{
@@ -46,7 +43,7 @@ export default function RootLayoutClient({ children, user }: props) {
           flex: "1 1 auto",
         }}>
         {children}
-        <ToastContainer />
+        <Toaster richColors />
       </main>
 
       <Footer />
