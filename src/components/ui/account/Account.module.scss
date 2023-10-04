@@ -121,10 +121,9 @@
       opacity: 0;
       visibility: hidden;
 
-      background-color: #ffffff;
+      background: #ffffff;
       border: 1px solid #dbdbde;
-      border-radius: 0.45rem;
-
+      border-radius: 0.75rem;
       -webkit-box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
       box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
     }
@@ -161,7 +160,7 @@
 
         font-size: 0.875rem;
         font-weight: 400;
-        color: rgb(55, 53, 47);
+        color: rgba(55, 53, 47, 0.688);
 
         transition: 0.2s;
 
@@ -178,8 +177,8 @@
         }
 
         &.active {
-          background: #5340ff;
-          color: #fff;
+          // background: #5340ff;
+          color: rgb(55, 53, 47);
         }
 
         &.email {
