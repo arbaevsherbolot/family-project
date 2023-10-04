@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
-import { useSignOut } from "./hooks/useSignOut";
 
 export { default } from "next-auth/middleware";
 
@@ -46,7 +45,7 @@ export async function middleware(request: NextRequest) {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token.tokens.access_token}`,
+            Authorization: `Bearer ${token?.tokens.access_token}`,
             baseurl: `${process.env.NEXT_PUBLIC_API_URL}`,
           },
         }
@@ -64,7 +63,8 @@ export async function middleware(request: NextRequest) {
           }
         });
 
-        await useSignOut();
+        const redirectUrl = new URL("/logout", url);
+        return NextResponse.redirect(redirectUrl);
       }
     } catch (_) {}
   }
@@ -73,6 +73,11 @@ export async function middleware(request: NextRequest) {
 
   if (isAuth && pathname.startsWith("/login")) {
     const redirectUrl = new URL(next, url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  if (!isAuth && pathname.startsWith("/logout")) {
+    const redirectUrl = new URL("/login", url);
     return NextResponse.redirect(redirectUrl);
   }
 

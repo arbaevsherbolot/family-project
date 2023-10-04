@@ -77,10 +77,8 @@
           }
 
           &:focus {
-            // border-width: 1px;
             border-color: #5340ff7f;
-            // box-shadow: 0 0 10px #5340ff4f;
-            // outline-color: #5340ff2f;
+            outline-color: #5340ff2f;
 
             &::placeholder {
               color: rgba(55, 53, 47, 0.38);

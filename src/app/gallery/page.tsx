@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import GalleryClient from "./page.c";
 
 export const metadata: Metadata = {
-  title: "Arbaevs | Gallery",
+  title: "Арбаевы | Галерея",
 };
 
 export default async function Gallery() {

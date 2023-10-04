@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import BlogClient from "./page.c";
 
 export const metadata: Metadata = {
-  title: "Arbaevs | Blog",
+  title: "Арбаевы | Блог",
 };
 
 export default async function Blog() {

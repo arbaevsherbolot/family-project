@@ -3,15 +3,40 @@
 import React, { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
-import { useSignOut } from "../../../hooks/useSignOut";
+import { signOut } from "next-auth/react";
 import { errorNotification } from "../../../lib/utils/notification";
 import { menuItems } from "../../../data/account-menu";
 import Logo from "../logo/Logo.component";
 import { ArrowSvg, LogoutSvg, LoadSvg, VerifySvg } from "../../../assets/svg";
 import styles from "./Account.module.scss";
 
-export default function Account() {
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
+
+type User = {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  isVerified: boolean;
+  email: string;
+  password: string;
+  resetPasswordSecret?: string | null;
+  role: UserRole;
+  requests: number;
+  lastRequest?: Date | null;
+  firstName: string | null;
+  lastName: string | null;
+  bio?: string | null;
+  photo?: string | null;
+  phone?: string | null;
+  refreshToken?: string | null;
+};
+
+interface props {
+  user: User | null;
+}
+
+export default function Account({ user }: props) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -24,10 +49,10 @@ export default function Account() {
     setLoading(true);
 
     try {
-      await useSignOut();
+      await signOut();
       router.push("/login");
     } catch (e) {
-      errorNotification("Ошибка сервера, невозможно выйти из системы");
+      errorNotification("Не удалось выйти из системы");
     } finally {
       setLoading(false);
     }
@@ -50,12 +75,7 @@ export default function Account() {
     };
   }, []);
 
-  const { data } = useSession();
-  const user = data?.user;
-
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   return (
     <>
@@ -83,7 +103,7 @@ export default function Account() {
           </div>
 
           <ArrowSvg
-            className={!close ? `${styles.icon} ${styles.active}` : styles.icon}
+            className={isClose ? `${styles.icon} ${styles.active}` : styles.icon}
           />
         </div>
 

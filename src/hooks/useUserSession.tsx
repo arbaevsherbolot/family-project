@@ -7,11 +7,20 @@ type Tokens = {
 };
 
 export const useUserSession = async () => {
-  const session = await getServerSession(authOptions);
-  const tokens: Tokens = {
-    access_token: `${session?.tokens.access_token}`,
-    refresh_token: `${session?.tokens.refresh_token}`,
-  };
+  try {
+    const session = await getServerSession(authOptions);
 
-  if (session) return tokens;
+    if (session) {
+      const tokens: Tokens = {
+        access_token: `${session.tokens?.access_token}`,
+        refresh_token: `${session.tokens?.refresh_token}`,
+      };
+      return tokens;
+    }
+
+    return null;
+  } catch (e) {
+    //@ts-ignore
+    console.error(e);
+  }
 };

@@ -6,14 +6,37 @@ import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
+
+type User = {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isActive: boolean;
+  isVerified: boolean;
+  email: string;
+  password: string;
+  resetPasswordSecret?: string | null;
+  role: UserRole;
+  requests: number;
+  lastRequest?: Date | null;
+  firstName: string | null;
+  lastName: string | null;
+  bio?: string | null;
+  photo?: string | null;
+  phone?: string | null;
+  refreshToken?: string | null;
+};
+
 interface props {
   children: React.ReactNode;
+  user: User | null;
 }
 
-export default function RootLayoutClient({ children }: props) {
+export default function RootLayoutClient({ children, user }: props) {
   return (
     <>
-      <Header />
+      <Header user={user}/>
       <NextNProgress color="red" />
 
       <main

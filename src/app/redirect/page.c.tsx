@@ -12,14 +12,15 @@ export default function RedirectClient() {
   return (
     <>
       <div className={styles.page_wrapper}>
-        <span className={styles.span}>
+        <span className={styles.box}>
           <LoadSvg
             className={styles.load}
             style={{
               fill: "rgba(0, 0, 0, 0.8)",
             }}
           />
-          Переадресация...
+
+          <h2 className={styles.title}>Переадресация...</h2>
         </span>
       </div>
     </>
