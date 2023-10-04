@@ -62,9 +62,6 @@ export async function middleware(request: NextRequest) {
             responseCookies.delete(cookie.name);
           }
         });
-
-        const redirectUrl = new URL("/logout", url);
-        return NextResponse.redirect(redirectUrl);
       }
     } catch (_) {}
   }
