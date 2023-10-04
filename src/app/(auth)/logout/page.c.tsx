@@ -20,9 +20,7 @@ export default function LogoutClient() {
       }
     };
 
-    return () => {
-      logout();
-    };
+    logout();
   }, []);
 
   return (
