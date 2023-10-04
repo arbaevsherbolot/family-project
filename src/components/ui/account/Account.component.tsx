@@ -103,7 +103,9 @@ export default function Account({ user }: props) {
           </div>
 
           <ArrowSvg
-            className={isClose ? `${styles.icon} ${styles.active}` : styles.icon}
+            className={
+              isClose ? `${styles.icon} ${styles.active}` : styles.icon
+            }
           />
         </div>
 

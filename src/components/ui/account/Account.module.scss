@@ -10,7 +10,7 @@
 
   cursor: pointer;
 
-  @media (max-width: 1065px) {
+  @media (max-width: 1065.1px) {
     justify-content: center;
 
     margin: 1rem 0.8rem 0 0.8rem;
@@ -28,7 +28,7 @@
 
   transition: 0.3s;
 
-  @media (min-width: 1065px) {
+  @media (min-width: 1065.1px) {
     &:hover {
       background: #f1f1f1;
 
@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
 
-    @media (max-width: 1065px) {
+    @media (max-width: 1065.1px) {
       padding: 0 1.2rem;
 
       justify-content: start;
@@ -66,7 +66,7 @@
         font-weight: 600;
         color: rgb(55, 53, 47);
 
-        @media (max-width: 1065px) {
+        @media (max-width: 1065.1px) {
           font-size: 0.95rem;
         }
 
@@ -75,7 +75,7 @@
         }
       }
 
-      @media (max-width: 1065px) {
+      @media (max-width: 1065.1px) {
         display: flex;
         flex-direction: column;
       }
@@ -87,7 +87,7 @@
 
     font-size: 1.5rem;
 
-    @media (max-width: 1065px) {
+    @media (max-width: 1065.1px) {
       display: block;
 
       margin-left: auto;
@@ -108,7 +108,7 @@
   .account_menu {
     display: none;
 
-    @media (min-width: 1065px) {
+    @media (min-width: 1065.1px) {
       min-width: 220px;
 
       position: absolute;
@@ -128,7 +128,7 @@
       box-shadow: 0px 3px 5px rgb(0 0 0 / 4%);
     }
 
-    @media (max-width: 1065px) {
+    @media (max-width: 1065.1px) {
       &.active {
         display: block;
       }
@@ -145,7 +145,7 @@
 
       border-bottom: 1px solid #dbdbde;
 
-      @media (max-width: 1065px) {
+      @media (max-width: 1065.1px) {
         border: none;
       }
 
@@ -164,7 +164,7 @@
 
         transition: 0.2s;
 
-        @media (max-width: 1065px) {
+        @media (max-width: 1065.1px) {
           border-radius: 0.4rem;
         }
 
@@ -209,7 +209,7 @@
 
       transition: 0.2s;
 
-      @media (max-width: 1065px) {
+      @media (max-width: 1065.1px) {
         border-radius: 0.4rem;
         margin: 0;
       }
