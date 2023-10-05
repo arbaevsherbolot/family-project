@@ -15,9 +15,9 @@
 
     .user {
       width: 100%;
-      height: 350px;
+      height: 850px;
 
-      max-width: 350px;
+      max-width: 750px;
 
       display: flex;
       flex-direction: column;
@@ -41,6 +41,9 @@
       }
 
       .data {
+        width: 100%;
+        height: 100%;
+
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -53,6 +56,27 @@
 
         .email {
           font-size: 0.875rem;
+          font-weight: 500;
+          color: rgb(55, 53, 47);
+        }
+
+        .bio {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          min-width: 100%;
+          max-height: 500px;
+
+          margin-top: 1.05rem;
+
+          resize: none;
+
+          background: transparent;
+          border: 0;
+          outline: 0;
+
+          font-size: 0.9rem;
+          font-family: sans-serif;
           font-weight: 500;
           color: rgb(55, 53, 47);
         }

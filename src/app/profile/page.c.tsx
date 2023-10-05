@@ -54,6 +54,12 @@ export default function ProfileClient({ user }: props) {
               </h2>
 
               <span className={styles.email}>{user.email}</span>
+
+              <textarea
+                disabled
+                className={styles.bio}
+                value={user.bio ? user.bio : ""}
+                readOnly></textarea>
             </div>
           </div>
         </div>

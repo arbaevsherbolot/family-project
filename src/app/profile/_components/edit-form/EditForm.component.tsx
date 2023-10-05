@@ -183,9 +183,11 @@ export default function EditForm({ user }: props) {
               )}
             </div>
 
-            <Button type="submit" load={loading} disabled={isDirty}>
-              Сохранить
-            </Button>
+            <div className={styles.button_wrapper}>
+              <Button type="submit" load={loading} disabled={!isDirty}>
+                Сохранить
+              </Button>
+            </div>
           </div>
 
           <div className={styles.info}>

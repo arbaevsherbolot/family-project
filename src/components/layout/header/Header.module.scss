@@ -83,8 +83,8 @@
 
         .menu_icon {
           position: relative;
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           cursor: default;
 
           border-radius: 50%;
@@ -114,7 +114,7 @@
             right: 0;
             left: 0;
             bottom: 0;
-            width: 26px;
+            width: 22px;
             height: 12px;
           }
 
@@ -154,7 +154,7 @@
           &.active:hover span:last-of-type,
           &:hover .button.active + div span:first-of-type,
           &:hover .button.active + div span:last-of-type {
-            width: 26px;
+            width: 22px;
           }
         }
 
