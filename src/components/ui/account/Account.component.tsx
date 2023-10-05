@@ -2,12 +2,19 @@
 
 import React, { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ReactElement } from "react";
 import { signOut } from "next-auth/react";
 import { errorNotification } from "../../../lib/utils/notification";
-import { menuItems } from "../../../data/account-menu";
+import { menuItems, ItemType } from "../../../data/account-menu";
 import Logo from "../logo/Logo.component";
-import { ArrowSvg, LogoutSvg, LoadSvg, VerifySvg } from "../../../assets/svg";
+import {
+  ArrowSvg,
+  LogoutSvg,
+  LoadSvg,
+  VerifySvg,
+  ImagesSvg,
+  UserSvg,
+} from "../../../assets/svg";
 import styles from "./Account.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -32,6 +39,11 @@ type User = {
   refreshToken?: string | null;
 };
 
+type Icons = {
+  name: string;
+  icon: ReactElement;
+};
+
 interface props {
   user: User | null;
 }
@@ -44,6 +56,22 @@ export default function Account({ user }: props) {
   const [isClose, setIsClose] = useState<boolean>(true);
 
   const accountRef = useRef<HTMLDivElement>(null);
+
+  const icons: Icons[] = [
+    {
+      name: "ImagesSvg",
+      icon: <ImagesSvg className={`${styles.icon} ${styles.menu}`} />,
+    },
+    {
+      name: "UserSvg",
+      icon: <UserSvg className={`${styles.icon} ${styles.menu}`} />,
+    },
+  ];
+
+  const icon = (item: ItemType) => {
+    const foundIcon = icons.find((icon) => item.icon === icon.name);
+    return foundIcon ? foundIcon.icon : null;
+  };
 
   const handleLogout = async () => {
     setLoading(true);
@@ -131,6 +159,7 @@ export default function Account({ user }: props) {
                     ? `${styles.item} ${styles.active}`
                     : styles.item
                 }>
+                {icon(item)}
                 {item.name}
               </Link>
             ))}

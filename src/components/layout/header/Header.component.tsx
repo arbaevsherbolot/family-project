@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { links } from "../../../data/links";
-import { ArbaevsLogoSvg } from "../../../assets/svg/index";
+import { ArbaevsLogoSvg, ArrowSvg } from "../../../assets/svg/index";
 import Account from "../../../components/ui/account/Account.component";
 import styles from "./Header.module.scss";
 
@@ -121,6 +121,7 @@ export default function Header({ user }: props) {
                         ? `${styles.link} ${styles.active}`
                         : styles.link
                     }>
+                    <ArrowSvg className={`${styles.icon} ${styles.arrow}`} />
                     {link.name}
                   </Link>
                 ))}
