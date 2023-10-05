@@ -7,6 +7,7 @@ import styles from "./Button.module.scss";
 interface props {
   children: React.ReactNode;
   style?: keyof TStyles;
+  disabled?: boolean;
   type: keyof TTypes;
   load: boolean;
   onClick?: () => void;
@@ -23,6 +24,7 @@ type TTypes = {
 export default function Button({
   children,
   style,
+  disabled,
   type,
   load,
   onClick,
@@ -39,11 +41,18 @@ export default function Button({
       {!load ? (
         <button
           type={type}
+          disabled={disabled}
           onClick={
             onClick ? onClick : () => redirect && redirectToPage(redirect)
           }
           className={
-            style ? `${styles.button} ${styles[style]}` : styles.button
+            style
+              ? disabled
+                ? `${styles.button} ${styles[style]} ${styles.disabled}`
+                : `${styles.button} ${styles[style]}`
+              : disabled
+              ? `${styles.button} ${styles.disabled}`
+              : styles.button
           }>
           {children}
         </button>

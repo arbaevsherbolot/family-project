@@ -29,6 +29,17 @@
     background: #4d3ce8;
   }
 
+  &.disabled {
+    background: #9b90ffbb;
+
+    cursor: not-allowed;
+
+    &:hover,
+    &:active {
+      background: #9b90ffbb;
+    }
+  }
+
   .load {
     font-size: 1rem;
 

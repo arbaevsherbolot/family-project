@@ -133,7 +133,7 @@ export default function LoginForm() {
             </Button>
           </div>
 
-          <div className={styles.desc}>
+          <div className={styles.info}>
             Для доступа к сайту вам необходимо выполнить вход (авторизоваться)
           </div>
         </form>

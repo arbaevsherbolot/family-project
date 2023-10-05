@@ -1,5 +1,7 @@
 "use client";
 
+import Modal from "../../components/ui/modal/Modal.component";
+import EditForm from "./_components/edit-form/EditForm.component";
 import Logo from "../../components/ui/logo/Logo.component";
 import styles from "./Profile.module.scss";
 
@@ -55,6 +57,10 @@ export default function ProfileClient({ user }: props) {
             </div>
           </div>
         </div>
+
+        <Modal open={true}>
+          <EditForm user={user} />
+        </Modal>
       </div>
     </>
   );
