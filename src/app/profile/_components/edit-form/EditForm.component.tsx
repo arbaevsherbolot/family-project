@@ -69,7 +69,7 @@ export default function EditForm({ user }: props) {
       setValue("lastName", user.lastName || "");
       setValue("bio", user.bio || "");
     }
-  }, [user]);
+  }, [user, setValue]);
 
   return (
     <>
@@ -77,7 +77,7 @@ export default function EditForm({ user }: props) {
         <div className={styles.text}>
           <h2 className={styles.title}>Редактировать профиль</h2>
 
-          <p className={styles.desc}>Измените информацию о своем профиле</p>
+          <p className={styles.desc}>Измените информацию o своём профиле</p>
         </div>
 
         <Logo
@@ -191,7 +191,7 @@ export default function EditForm({ user }: props) {
           </div>
 
           <div className={styles.info}>
-            Для сохранения изменений, нажмите "Сохранить"
+            Для сохранения изменений, нажмите Сохранить
           </div>
         </form>
       </div>

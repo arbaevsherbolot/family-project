@@ -64,7 +64,7 @@ export default function LoginForm() {
     if (cookieEmail) {
       setValue("email", cookieEmail);
     }
-  }, []);
+  }, [setValue]);
 
   return (
     <>

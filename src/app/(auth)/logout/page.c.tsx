@@ -21,7 +21,7 @@ export default function LogoutClient() {
     };
 
     logout();
-  }, []);
+  }, [router]);
 
   return (
     <>
