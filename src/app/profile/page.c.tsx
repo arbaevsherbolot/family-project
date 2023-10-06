@@ -67,7 +67,7 @@ export default function ProfileClient({ user }: props) {
                     onClick={handleOpenModal}
                     style="edit">
                     <EditSvg />
-                    Edit profile
+                    Редактировать
                   </Button>
                 </h2>
 
