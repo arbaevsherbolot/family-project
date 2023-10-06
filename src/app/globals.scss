@@ -11,16 +11,14 @@
 html,
 body {
   width: 100vw;
+  height: 100vh;
 
   min-width: 300px;
-  min-height: 100vh;
 
   overflow-x: hidden;
 }
 
 body {
-  height: 100vh;
-
   // background: rgb(251, 251, 250);
   background: #ffffff;
 

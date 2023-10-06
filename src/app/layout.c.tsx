@@ -39,14 +39,14 @@ export default function RootLayoutClient({ children, user }: props) {
       <main
         style={{
           width: "100%",
-          minHeight: "100%",
+          minHeight: "100vh",
           flex: "1 1 auto",
         }}>
         {children}
         <Toaster richColors />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

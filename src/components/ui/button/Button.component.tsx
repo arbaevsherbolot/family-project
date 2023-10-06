@@ -14,7 +14,9 @@ interface props {
   redirect?: string;
 }
 
-type TStyles = {};
+type TStyles = {
+  edit: string;
+};
 
 type TTypes = {
   button: string;

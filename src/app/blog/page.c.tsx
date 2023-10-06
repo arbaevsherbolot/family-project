@@ -3,7 +3,7 @@
 import React, { Suspense } from "react";
 import { posts } from "../../data/posts";
 import Post from "./_components/post/Post.component";
-import styles from "./page.module.scss";
+import styles from "./Blog.module.scss";
 
 export default function BlogClient() {
   return (

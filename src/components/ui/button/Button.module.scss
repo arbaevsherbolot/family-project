@@ -54,6 +54,38 @@
       }
     }
   }
+
+  &.edit {
+    min-width: 110px;
+    max-width: 110px;
+
+    padding: 0.25rem;
+
+    gap: 0.45rem;
+
+    background: transparent;
+    border: 1px solid #dbdbde;
+    border-radius: 0.425rem;
+
+    font-size: 0.755rem;
+    color: rgb(55, 53, 47);
+
+    &:hover {
+      background: #f6f7f89a;
+    }
+
+    &:active {
+      background: #ecedee;
+    }
+
+    &.active {
+      background: #f6f7f8;
+    }
+
+    @media (max-width: 535px) {
+      font-size: 0.715rem;
+    }
+  }
 }
 
 .button_load {

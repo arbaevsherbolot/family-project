@@ -20,7 +20,6 @@ export const useUserSession = async () => {
 
     return null;
   } catch (e) {
-    //@ts-ignore
     console.error(e);
   }
 };

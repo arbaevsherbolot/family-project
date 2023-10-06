@@ -164,7 +164,7 @@
 
         font-size: 0.875rem;
         font-weight: 400;
-        color: rgb(55, 53, 47);
+        color: #1d1d1f;
 
         transition: 0.2s;
 
@@ -181,7 +181,7 @@
         }
 
         &.active {
-          background: #f6f7f8;
+          background: #f5f5f7;
         }
 
         &.email {
@@ -250,33 +250,3 @@
     }
   }
 }
-
-// .button {
-//   padding: 0.6rem;
-//   margin: 0.8rem;
-
-//   @media (max-width: 1015px) {
-//     margin: 0.8rem 0 0 0;
-//   }
-
-//   border-radius: 0.4rem;
-
-//   text-decoration: none;
-
-//   text-align: center;
-//   font-size: 0.9rem;
-//   font-weight: 600;
-
-//   color: #ff4747;
-//   background-color: #ff62621a;
-
-//   transition: 0.4s;
-
-//   &:hover {
-//     background-color: #ff62625d;
-//   }
-
-//   &:active {
-//     background-color: #ff62626c;
-//   }
-// }
