@@ -96,6 +96,10 @@
         &.active {
           background: #e5e4e2;
         }
+
+        @media (max-width: 985px) {
+          cursor: default;
+        }
       }
     }
 
