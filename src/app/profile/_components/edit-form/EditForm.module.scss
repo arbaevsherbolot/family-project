@@ -132,6 +132,10 @@
 
             font-family: sans-serif;
             font-weight: 500;
+
+            @media (max-width: 695px) {
+              max-height: 290px;
+            }
           }
         }
 
