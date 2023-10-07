@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from 'next'
 import { useUserData } from "../../hooks/useUserData";
 import ProfileClient from "./page.c";
 

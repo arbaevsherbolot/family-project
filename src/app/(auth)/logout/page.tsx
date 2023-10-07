@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from 'next'
 import LogoutClient from "./page.c";
 
 export const metadata: Metadata = {
