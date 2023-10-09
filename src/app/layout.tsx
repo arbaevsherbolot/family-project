@@ -16,13 +16,15 @@ interface props {
 }
 
 export default async function RootLayout({ children }: props) {
-  const user = await useUserData();
+  const data = await useUserData();
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <RootLayoutClient user={user}>{children}</RootLayoutClient>
+          <RootLayoutClient user={data && data.user}>
+            {children}
+          </RootLayoutClient>
         </Providers>
       </body>
     </html>

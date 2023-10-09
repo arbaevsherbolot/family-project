@@ -110,6 +110,12 @@
           flex-direction: column;
         }
 
+        .logo_wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 0.55rem;
+        }
+
         .info {
           display: flex;
           flex-direction: column;

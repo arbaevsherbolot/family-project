@@ -39,7 +39,7 @@ export default function Header({ user }: props) {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  let navbarRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {

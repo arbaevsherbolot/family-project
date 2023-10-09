@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { errorNotification } from "@/lib/utils/notification";
 import Button from "../../../../components/ui/button/Button.component";
-import Logo from "../../../../components/ui/logo/Logo.component";
 import styles from "./EditForm.module.scss";
 
 type FormData = {
@@ -79,17 +78,6 @@ export default function EditForm({ user }: props) {
 
           <p className={styles.desc}>Измените информацию o своём профиле</p>
         </div>
-
-        <Logo
-          src={
-            user.photo
-              ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
-              : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-          }
-          alt={`${user.firstName} ${user.lastName}`}
-          width={120}
-          height={120}
-        />
 
         <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
           <div className={styles.inputs_container}>

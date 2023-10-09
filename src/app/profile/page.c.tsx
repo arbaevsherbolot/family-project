@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import Modal from "../../components/ui/modal/Modal.component";
 import Button from "../../components/ui/button/Button.component";
 import EditForm from "./_components/edit-form/EditForm.component";
-import { EditSvg } from "../../assets/svg";
+import Upload from "../../components/ui/upload/Upload.component";
 import Logo from "../../components/ui/logo/Logo.component";
+import { EditSvg, PhotoSvg } from "../../assets/svg";
 import styles from "./Profile.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -32,9 +33,10 @@ type User = {
 
 interface props {
   user: User;
+  session: string;
 }
 
-export default function ProfileClient({ user }: props) {
+export default function ProfileClient({ user, session }: props) {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const handleOpenModal = () => {
@@ -47,16 +49,23 @@ export default function ProfileClient({ user }: props) {
         <div className={styles.profile_wrapper}>
           <div className={styles.user}>
             <div className={styles.data}>
-              <Logo
-                src={
-                  user.photo
-                    ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
-                    : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
-                }
-                alt={`${user.firstName} ${user.lastName}`}
-                width={120}
-                height={120}
-              />
+              <div className={styles.logo_wrapper}>
+                <Logo
+                  src={
+                    user.photo
+                      ? user.photo
+                      : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
+                  }
+                  alt={`${user.firstName} ${user.lastName}`}
+                  width={120}
+                  height={120}
+                />
+
+                <Upload path="/api/auth/upload/photo" session={session}>
+                  <PhotoSvg />
+                  Изменить фото
+                </Upload>
+              </div>
 
               <div className={styles.info}>
                 <h2 className={styles.name}>
@@ -70,7 +79,6 @@ export default function ProfileClient({ user }: props) {
                     Редактировать
                   </Button>
                 </h2>
-
                 <span className={styles.email}>{user.email}</span>
               </div>
             </div>

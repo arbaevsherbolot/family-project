@@ -40,5 +40,8 @@ export const useUserData = async () => {
 
   if (!user || !response.ok) return null;
 
-  return user;
+  return {
+    user,
+    session: tokens?.access_token,
+  };
 };

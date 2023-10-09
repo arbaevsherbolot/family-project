@@ -60,7 +60,7 @@
   }
 
   &.edit {
-    min-width: 120px;
+    min-width: 125px;
     max-width: 120px;
 
     padding: 0.25rem;
@@ -73,6 +73,10 @@
 
     font-size: 0.755rem;
     color: rgb(55, 53, 47);
+
+    .load {
+      font-size: 0.8rem;
+    }
 
     &:hover {
       background: #f6f7f89a;

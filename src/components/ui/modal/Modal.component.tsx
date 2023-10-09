@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./Modal.module.scss";
 import { CloseSvg } from "@/assets/svg";
+import styles from "./Modal.module.scss";
 
 interface props {
   children: React.ReactNode;

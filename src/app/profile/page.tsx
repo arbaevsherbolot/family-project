@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import { useUserData } from "../../hooks/useUserData";
 import ProfileClient from "./page.c";
 
@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Profile() {
-  const user = await useUserData();
+  const data = await useUserData();
 
-  if (!user) return null;
+  if (!data || !data.user || !data.session) return null;
 
-  return <ProfileClient user={user} />;
+  return <ProfileClient user={data.user} session={data.session} />;
 }

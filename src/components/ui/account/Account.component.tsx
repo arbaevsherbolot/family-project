@@ -115,7 +115,7 @@ export default function Account({ user }: props) {
           <Logo
             src={
               user.photo
-                ? `${process.env.NEXT_PUBLIC_API_URL}/${user.photo}`
+                ? user.photo
                 : "https://cdn-icons-png.flaticon.com/512/3177/3177440.png"
             }
             width={38}

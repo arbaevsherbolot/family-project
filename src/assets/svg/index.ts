@@ -11,3 +11,4 @@ export { default as VerifySvg } from "./logout.svg";
 export { default as ImagesSvg } from "./images.svg";
 export { default as UserSvg } from "./user.svg";
 export { default as EditSvg } from "./edit.svg";
+export { default as PhotoSvg } from "./photo.svg";
