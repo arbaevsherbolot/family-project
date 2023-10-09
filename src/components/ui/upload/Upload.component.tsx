@@ -58,7 +58,7 @@ export default function Upload({ children, path, session }: props) {
       errorNotification("Что-то пошло не так");
       console.error(e);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
