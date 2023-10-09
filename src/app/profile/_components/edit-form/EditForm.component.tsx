@@ -1,8 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { errorNotification } from "@/lib/utils/notification";
+import axios from "axios";
+import {
+  errorNotification,
+  successNotification,
+} from "@/lib/utils/notification";
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./EditForm.module.scss";
 
@@ -36,9 +41,12 @@ type User = {
 
 interface props {
   user: User;
+  session: string;
 }
 
-export default function EditForm({ user }: props) {
+export default function EditForm({ user, session }: props) {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -52,9 +60,23 @@ export default function EditForm({ user }: props) {
     setLoading(true);
 
     try {
-      console.log(formData);
+      const response = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile/edit`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session}`,
+            baseurl: `${process.env.NEXT_PUBLIC_API_URL}`,
+          },
+        }
+      );
+
+      if (response.data) {
+        router.refresh();
+        successNotification("Информация о пользователе успешно обновлена");
+      }
     } catch (e) {
-      //@ts-ignore
       errorNotification("Что-то пошло не так");
       console.error(e);
     } finally {

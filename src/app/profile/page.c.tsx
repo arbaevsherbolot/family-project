@@ -93,7 +93,7 @@ export default function ProfileClient({ user, session }: props) {
       </div>
 
       <Modal open={isOpenModal}>
-        <EditForm user={user} />
+        <EditForm user={user} session={session}/>
       </Modal>
     </>
   );
