@@ -49,7 +49,6 @@ export default function Upload({ children, path, session }: props) {
         );
 
         if (response.data) {
-          setLoading(false);
           router.refresh();
           successNotification("Фото пользователя успешно обновлено");
         }
