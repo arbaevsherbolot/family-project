@@ -1,5 +1,5 @@
 .layout_wrapper {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   padding-top: 4.85rem;
@@ -106,8 +106,10 @@
         gap: 0.75rem;
 
         @media (max-width: 535px) {
-          align-items: start;
+          align-items: center;
           flex-direction: column;
+
+          gap: 1.85rem;
         }
 
         .logo_wrapper {
@@ -121,6 +123,8 @@
           flex-direction: column;
           gap: 0.25rem;
 
+          margin-right: auto;
+
           .name {
             display: flex;
             align-items: center;
@@ -132,9 +136,8 @@
 
             @media (max-width: 535px) {
               align-items: start;
-              // flex-direction: column-reverse;
 
-              font-size: 1.15rem;
+              font-size: 1.25rem;
             }
           }
 

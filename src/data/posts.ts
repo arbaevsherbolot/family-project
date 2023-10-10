@@ -25,7 +25,7 @@ export const posts: PostType[] = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero est explicabo aspernatur ipsam, iure fugiat nesciunt necessitatibus officia dolorem vel officiis unde rem quis sint quaerat! Unde facilis tempore corporis.",
     tags: ["FAMILY"],
     author: {
-      logo: `${process.env.NEXT_PUBLIC_API_URL}/sher.png`,
+      logo: `https://tfhlqsdjoblfxnghuumq.supabase.co/storage/v1/object/public/photos/user-1-photo-1696869379614.jpeg`,
       firstName: "Шерболот",
       lastName: "Арбаев",
     },
