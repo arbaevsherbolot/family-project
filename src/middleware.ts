@@ -52,7 +52,6 @@ export async function middleware(request: NextRequest) {
       );
 
       const responseData = await response.json();
-      console.log(responseData);
 
       if (responseData.statusCode !== 401) {
         user = responseData;
