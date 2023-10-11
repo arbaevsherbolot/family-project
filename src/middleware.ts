@@ -37,7 +37,7 @@ export async function middleware(request: NextRequest) {
 
   let user: User | undefined;
 
-  if (token?.tokens.access_token) {
+  if (token && token?.tokens.access_token) {
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`,
@@ -52,6 +52,7 @@ export async function middleware(request: NextRequest) {
       );
 
       const responseData = await response.json();
+      console.log(responseData);
 
       if (responseData.statusCode !== 401) {
         user = responseData;
