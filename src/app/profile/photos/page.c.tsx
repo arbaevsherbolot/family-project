@@ -61,14 +61,20 @@ export default function PhotosClient({ session, images }: props) {
         <div className={styles.content}>
           <h2 className={styles.title}>Мои фото</h2>
 
-          <Upload path="/api/images" session={session}>
-            Загрузить фото
-          </Upload>
+          <div className={styles.button_wrapper}>
+            <Upload
+              path="/api/images"
+              session={session}
+              success_message="Фотография успешно добавлена">
+              Загрузить фото
+            </Upload>
+          </div>
 
           <div className={styles.images}>
-            {images.map((image, idx) => (
-              <Suspense key={idx} fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
+              {images.map((image, idx) => (
                 <div
+                  key={idx}
                   className={styles.image_wrapper}
                   onClick={() => handleOpenImage(image.id)}>
                   <Image
@@ -79,8 +85,8 @@ export default function PhotosClient({ session, images }: props) {
                     className={styles.image}
                   />
                 </div>
-              </Suspense>
-            ))}
+              ))}
+            </Suspense>
           </div>
         </div>
       </div>

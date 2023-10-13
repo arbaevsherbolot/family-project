@@ -61,7 +61,10 @@ export default function ProfileClient({ user, session }: props) {
                   height={120}
                 />
 
-                <Upload path="/api/auth/upload/photo" session={session}>
+                <Upload
+                  path="/api/auth/upload/photo"
+                  session={session}
+                  success_message="Фото пользователя успешно обновлено">
                   <PhotoSvg />
                   Изменить фото
                 </Upload>
@@ -93,7 +96,7 @@ export default function ProfileClient({ user, session }: props) {
       </div>
 
       <Modal open={isOpenModal}>
-        <EditForm user={user} session={session}/>
+        <EditForm user={user} session={session} />
       </Modal>
     </>
   );

@@ -13,9 +13,10 @@ interface props {
   children: React.ReactNode;
   path: string;
   session: string;
+  success_message: string;
 }
 
-export default function Upload({ children, path, session }: props) {
+export default function Upload({ children, path, session, success_message }: props) {
   const router = useRouter();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -49,7 +50,7 @@ export default function Upload({ children, path, session }: props) {
 
         if (response.data) {
           router.refresh();
-          successNotification("Фото пользователя успешно обновлено");
+          successNotification(success_message);
         }
       }
     } catch (e) {
