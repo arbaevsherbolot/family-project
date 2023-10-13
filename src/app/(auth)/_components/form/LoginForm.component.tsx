@@ -20,16 +20,21 @@ type FormData = {
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next");
+  const next = searchParams.get("next") || "/";
 
   const {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [showInput, setShowInput] = useState<boolean>(false);
+
+  const handleShowInput = () => {
+    setShowInput(true);
+  };
 
   const handleSubmitForm: SubmitHandler<FormData> = async (formData) => {
     setLoading(true);
@@ -45,7 +50,7 @@ export default function LoginForm() {
 
       if (!response?.error) {
         successNotification("Успешный вход в систему");
-        router.push(`/redirect?to=${next || "/"}`);
+        router.push(`/redirect?to=${next}`);
       } else {
         errorNotification(response?.error.replace("Error: ", ""));
       }
@@ -83,6 +88,7 @@ export default function LoginForm() {
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
                 placeholder="sherbolot@wedevx.co"
+                onFocus={handleShowInput}
                 {...register("email", {
                   required: "Требуется электронная почта",
                   pattern: {
@@ -97,7 +103,9 @@ export default function LoginForm() {
               )}
             </div>
 
-            <div className={styles.input_container}>
+            <div
+              className={styles.input_container}
+              style={!showInput ? { display: "none" } : { display: "flex" }}>
               <span className={styles.label}>Пароль</span>
 
               <input
@@ -128,7 +136,7 @@ export default function LoginForm() {
               )}
             </div>
 
-            <Button type="submit" load={loading}>
+            <Button type="submit" load={loading} disabled={!isValid}>
               Войти
             </Button>
           </div>

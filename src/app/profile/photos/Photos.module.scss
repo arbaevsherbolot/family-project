@@ -2,11 +2,50 @@
   width: 100%;
   height: 100%;
 
-  .title {
-    padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    font-size: 1.75rem;
-    font-weight: 500;
-    color: #1d1d1f;
+  .content {
+    width: 100%;
+    height: 100%;
+
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.85rem;
+
+    .title {
+      padding-top: 1.25rem;
+
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #1d1d1f;
+    }
+
+    .images {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+
+      .image_wrapper {
+        width: 400px;
+        height: 380px;
+
+        overflow: hidden;
+
+        border-radius: 0.25rem;
+
+        .image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
 }

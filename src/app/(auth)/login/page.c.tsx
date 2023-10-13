@@ -7,12 +7,14 @@ export default function LoginClient() {
   return (
     <>
       <div className={styles.page_wrapper}>
-        <div className={styles.left}>
-          <LoginForm />
-        </div>
+        <div className={styles.content}>
+          <div className={styles.left}>
+            <LoginForm />
+          </div>
 
-        <div className={styles.right}>
-          <h3 className={styles.title}>Галерея нашей семьи</h3>
+          <div className={styles.right}>
+            <h3 className={styles.title}>Галерея нашей семьи</h3>
+          </div>
         </div>
       </div>
     </>
