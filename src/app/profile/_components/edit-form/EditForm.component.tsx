@@ -67,7 +67,6 @@ export default function EditForm({ user, session }: props) {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${session}`,
-            baseurl: `${process.env.NEXT_PUBLIC_API_URL}`,
           },
         }
       );

@@ -43,7 +43,6 @@ export default function Upload({ children, path, session }: props) {
             headers: {
               "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${session}`,
-              baseurl: `${process.env.NEXT_PUBLIC_API_URL}`,
             },
           }
         );
