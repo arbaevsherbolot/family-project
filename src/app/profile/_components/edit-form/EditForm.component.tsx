@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import axios from "axios";
+import { api } from "../../../../lib/api/api";
 import {
   errorNotification,
   successNotification,
 } from "@/lib/utils/notification";
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./EditForm.module.scss";
+
 
 type FormData = {
   firstName: string;
@@ -60,12 +61,11 @@ export default function EditForm({ user, session }: props) {
     setLoading(true);
 
     try {
-      const response = await axios.put(
+      const response = await api.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile/edit`,
         formData,
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${session}`,
           },
         }
