@@ -37,7 +37,7 @@ export default function Upload({ children, path, session }: props) {
         formData.append("file", file);
 
         const response = await api.put(
-          `${process.env.NEXT_PUBLIC_API_URL}${path}`,
+          `${path}`,
           formData,
           {
             headers: {

@@ -11,7 +11,6 @@ import {
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./EditForm.module.scss";
 
-
 type FormData = {
   firstName: string;
   lastName: string;
@@ -61,15 +60,11 @@ export default function EditForm({ user, session }: props) {
     setLoading(true);
 
     try {
-      const response = await api.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile/edit`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${session}`,
-          },
-        }
-      );
+      const response = await api.put(`/api/auth/profile/edit`, formData, {
+        headers: {
+          Authorization: `Bearer ${session}`,
+        },
+      });
 
       if (response.data) {
         router.refresh();
