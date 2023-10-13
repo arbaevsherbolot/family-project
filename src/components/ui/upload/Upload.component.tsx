@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { api } from "../../../lib/api/api";
+import axios from "axios";
 import {
   errorNotification,
   successNotification,
@@ -36,13 +36,13 @@ export default function Upload({ children, path, session }: props) {
         const formData = new FormData();
         formData.append("file", file);
 
-        const response = await api.put(
-          `${path}`,
+        const response = await axios.put(
+          `${process.env.NEXT_PUBLIC_API_URL}${path}`,
           formData,
           {
             headers: {
-              "Content-Type": "multipart/form-data",
               Authorization: `Bearer ${session}`,
+              "Content-Type": "multipart/form-data",
             },
           }
         );
