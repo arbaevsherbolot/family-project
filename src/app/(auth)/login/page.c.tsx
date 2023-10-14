@@ -1,6 +1,7 @@
 "use client";
 
 import LoginForm from "../_components/form/LoginForm.component";
+import { ArbaevsLogoSvg } from "../../../assets/svg";
 import styles from "../Auth.module.scss";
 
 export default function LoginClient() {
@@ -9,11 +10,13 @@ export default function LoginClient() {
       <div className={styles.page_wrapper}>
         <div className={styles.content}>
           <div className={styles.left}>
-            <LoginForm />
+            <h3 className={styles.title}>Галерея нашей семьи</h3>
           </div>
 
           <div className={styles.right}>
-            <h3 className={styles.title}>Галерея нашей семьи</h3>
+            <ArbaevsLogoSvg className={styles.logo} />
+
+            <LoginForm />
           </div>
         </div>
       </div>

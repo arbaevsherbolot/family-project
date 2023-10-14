@@ -34,7 +34,9 @@ type Image = {
   author: User;
   authorId: number;
   url: string;
-  title?: string;
+  title: string;
+  width: number;
+  height: number;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -65,7 +67,8 @@ export default function PhotosClient({ session, images }: props) {
             <Upload
               path="/api/images"
               session={session}
-              success_message="Фотография успешно добавлена">
+              success_message="Фотография успешно добавлена"
+              with_dimensions={true}>
               Загрузить фото
             </Upload>
           </div>
@@ -80,8 +83,9 @@ export default function PhotosClient({ session, images }: props) {
                   <Image
                     src={image.url}
                     alt={image.title ? image.title : "Image"}
-                    width={300}
-                    height={300}
+                    width={image.width}
+                    height={image.height}
+                    layout="responsive"
                     className={styles.image}
                   />
                 </div>
@@ -96,9 +100,14 @@ export default function PhotosClient({ session, images }: props) {
           <Image
             src={selectImage.url}
             alt={selectImage.title ? selectImage.title : "Image"}
-            width={300}
-            height={300}
-            style={{ width: "100%", height: "100%" }}
+            width={selectImage.width}
+            height={selectImage.height}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: "0.25rem",
+            }}
           />
         </Modal>
       )}

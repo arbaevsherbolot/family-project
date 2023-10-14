@@ -12,7 +12,7 @@ export default function RedirectClient() {
   return (
     <>
       <div className={styles.page_wrapper}>
-        <span className={styles.box}>
+        <div className={styles.box}>
           <LoadSvg
             className={styles.load}
             style={{
@@ -21,7 +21,7 @@ export default function RedirectClient() {
           />
 
           <h2 className={styles.title}>Переадресация...</h2>
-        </span>
+        </div>
       </div>
     </>
   );

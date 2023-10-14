@@ -2,16 +2,11 @@
   width: 100%;
   height: 100%;
 
-  max-width: 580px;
-  max-height: 500px;
-
   padding: 0.85rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  overflow: hidden;
 
   .form {
     width: 100%;
@@ -63,7 +58,7 @@
 
         .input {
           width: 100%;
-          padding: 0.8rem 1rem;
+          padding: 0.65rem 1rem;
 
           outline: 3.2px solid transparent;
 

@@ -8,6 +8,10 @@
 
   padding: 0.85rem 1.25rem;
 
+  @media (max-width: 695px) {
+    padding: 0.85rem 0.65rem;
+  }
+
   .text {
     width: 100%;
 
@@ -80,7 +84,7 @@
 
         .input {
           width: 100%;
-          padding: 0.8rem 1rem;
+          padding: 0.65rem 1rem;
 
           outline: 3.2px solid transparent;
 
@@ -135,7 +139,7 @@
             max-width: 100%;
             min-width: 100%;
 
-            min-height: 120px;
+            min-height: 250px;
             max-height: 320px;
 
             resize: vertical;

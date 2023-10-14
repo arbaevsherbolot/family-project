@@ -1,12 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { PostType } from "../../../../data/posts";
 import { PointsSvg } from "../../../../assets/svg";
 import { menuItems } from "../../../../data/menu";
-import Modal from "../../../../components/ui/modal/Modal.component";
 import styles from "./Post.module.scss";
-import Image from "next/image";
 
 interface props {
   post: PostType;
@@ -14,14 +13,9 @@ interface props {
 
 export default function Post({ post }: props) {
   const [openOptions, setOpenOptions] = useState(false);
-  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleOpenOptions = () => {
     setOpenOptions(!openOptions);
-  };
-
-  const handleOpenModal = () => {
-    setOpenModal(!openModal);
   };
 
   useEffect(() => {
@@ -88,7 +82,7 @@ export default function Post({ post }: props) {
             </div>
           </div>
 
-          <div className={styles.cover_wrapper} onClick={handleOpenModal}>
+          <div className={styles.cover_wrapper}>
             <Image
               src={post.cover}
               alt={post.title}
@@ -107,7 +101,7 @@ export default function Post({ post }: props) {
           </div>
 
           <div className={styles.text}>
-            <h3 className={styles.title} onClick={handleOpenModal}>
+            <h3 className={styles.title}>
               {post.title}
             </h3>
 
@@ -123,137 +117,6 @@ export default function Post({ post }: props) {
           </div>
         </div>
       </div>
-
-      <Modal open={openModal}>
-        <div
-          className={styles.post}
-          style={{
-            maxWidth: "100%",
-          }}>
-          <div className={styles.content}>
-            <div className={styles.head}>
-              <div className={styles.author}>
-                <div
-                  className={styles.logo_wrapper}
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                  }}>
-                  <Image
-                    src={post.author.logo}
-                    alt={`${post.author.firstName} ${post.author.lastName}`}
-                    width={36}
-                    height={36}
-                    className={styles.logo}
-                  />
-                </div>
-
-                <span
-                  className={styles.fullName}
-                  style={{
-                    fontSize: "0.955rem",
-                  }}>
-                  {post.author.firstName} {post.author.lastName}
-                </span>
-              </div>
-            </div>
-
-            <div className={styles.text}>
-              <h3 className={styles.title}>{post.title}</h3>
-
-              <div className={styles.info}>
-                <span className={styles.date}>{post.date}</span>
-
-                <span className={styles.dot}>•</span>
-
-                <span className={styles.to_read}>{post.time} read</span>
-              </div>
-            </div>
-
-            <div className={styles.tags}>
-              {post.tags.map((tag, i) => (
-                <span key={i} className={styles.tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <div
-              className={styles.cover_wrapper}
-              style={{
-                height: "450px",
-              }}>
-              <Image
-                src={post.cover}
-                alt={post.title}
-                width={800}
-                height={500}
-                className={styles.cover}
-              />
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div
-              className={styles.cover_wrapper}
-              style={{
-                height: "450px",
-              }}>
-              <Image
-                src={post.cover}
-                alt={post.title}
-                width={800}
-                height={500}
-                className={styles.cover}
-              />
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div
-              className={styles.cover_wrapper}
-              style={{
-                height: "450px",
-              }}>
-              <Image
-                src={post.cover}
-                alt={post.title}
-                width={500}
-                height={500}
-                className={styles.cover}
-              />
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-
-            <div className={styles.text}>
-              <p className={styles.desc}>{post.description}</p>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 }

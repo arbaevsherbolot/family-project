@@ -14,9 +14,16 @@ interface props {
   path: string;
   session: string;
   success_message: string;
+  with_dimensions: boolean;
 }
 
-export default function Upload({ children, path, session, success_message }: props) {
+export default function Upload({
+  children,
+  path,
+  session,
+  success_message,
+  with_dimensions,
+}: props) {
   const router = useRouter();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,13 +36,37 @@ export default function Upload({ children, path, session, success_message }: pro
     }
   };
 
+  const getImageDimensions = async (
+    file: File
+  ): Promise<{ width: number; height: number }> => {
+    return new Promise((resolve) => {
+      const image = new Image();
+
+      image.onload = () => {
+        const width = image.width;
+        const height = image.height;
+        resolve({ width, height });
+      };
+
+      image.src = URL.createObjectURL(file);
+    });
+  };
+
   const handleUploadPhoto = async () => {
     try {
       if (file) {
         setLoading(true);
+        console.log("Uploading");
 
         const formData = new FormData();
         formData.append("file", file);
+
+        if (with_dimensions) {
+          const { width, height } = await getImageDimensions(file);
+
+          formData.append("width", `${width}`);
+          formData.append("height", `${height}`);
+        }
 
         const response = await axios.put(
           `${process.env.NEXT_PUBLIC_API_URL}${path}`,

@@ -10,6 +10,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.41);
+  }
 
   .box {
     padding: 0.85rem;

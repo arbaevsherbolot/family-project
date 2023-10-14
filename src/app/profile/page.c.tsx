@@ -64,7 +64,8 @@ export default function ProfileClient({ user, session }: props) {
                 <Upload
                   path="/api/auth/upload/photo"
                   session={session}
-                  success_message="Фото пользователя успешно обновлено">
+                  success_message="Фото пользователя успешно обновлено"
+                  with_dimensions={false}>
                   <PhotoSvg />
                   Изменить фото
                 </Upload>

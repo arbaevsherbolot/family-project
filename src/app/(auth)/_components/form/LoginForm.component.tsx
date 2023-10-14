@@ -31,6 +31,7 @@ export default function LoginForm() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [showInput, setShowInput] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowInput = () => {
     setShowInput(true);
