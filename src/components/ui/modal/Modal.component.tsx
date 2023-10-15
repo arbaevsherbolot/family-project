@@ -38,10 +38,10 @@ export default function Modal({ children, open }: props) {
             ? `${styles.modal_wrappper} ${styles.active}`
             : styles.modal_wrappper
         }
-        // onClick={() => setIsClose(!isClose)}
-      >
+        onClick={() => setIsClose(!isClose)}>
         <div className={styles.box} onClick={(e) => e.stopPropagation()}>
           <div className={styles.head}>
+
             <CloseSvg
               className={styles.close}
               onClick={() => setIsClose(!isClose)}

@@ -5,14 +5,16 @@ import React, { Suspense, useState } from "react";
 import Modal from "../../../components/ui/modal/Modal.component";
 import Upload from "../../../components/ui/upload/Upload.component";
 import Button from "../../../components/ui/button/Button.component";
+import { formatDate } from "../../../lib/utils/format-date";
+import { DownloadSvg, ShareSvg, TrashSvg } from "../../../assets/svg";
 import styles from "./Photos.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   isActive: boolean;
   isVerified: boolean;
   email: string;
@@ -37,8 +39,8 @@ type Image = {
   title: string;
   width: number;
   height: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
 
 interface props {
@@ -51,6 +53,20 @@ export default function PhotosClient({ session, images }: props) {
   const [selectImageId, setSelectImageId] = useState<number>(0);
 
   const selectImage = images.find((image) => image.id === selectImageId);
+
+  if (selectImage) {
+    console.log(selectImage?.url);
+  }
+
+  const share = () => {
+    if (selectImage) {
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(
+        selectImage?.url
+      )}`;
+
+      window.open(whatsappURL);
+    }
+  };
 
   const handleOpenImage = (id: number) => {
     setSelectImageId(id);
@@ -85,7 +101,6 @@ export default function PhotosClient({ session, images }: props) {
                     alt={image.title ? image.title : "Image"}
                     width={image.width}
                     height={image.height}
-                    layout="responsive"
                     className={styles.image}
                   />
                 </div>
@@ -109,6 +124,41 @@ export default function PhotosClient({ session, images }: props) {
               borderRadius: "0.25rem",
             }}
           />
+
+          <h2
+            style={{
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              color: "rgba(8, 8, 8, 0.426)",
+            }}>
+            {formatDate(selectImage.createdAt)}
+          </h2>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.25rem",
+            }}>
+            <Button load={false} type="button">
+              Скачать
+              <DownloadSvg />
+            </Button>
+
+            <Button load={false} type="button" style="black" onClick={share}>
+              Поделиться
+              <ShareSvg
+                style={{
+                  fill: "#fff",
+                }}
+              />
+            </Button>
+
+            <Button load={false} type="button" style="delete">
+              Удалить
+              <TrashSvg />
+            </Button>
+          </div>
         </Modal>
       )}
     </>

@@ -13,3 +13,5 @@ export { default as UserSvg } from "./user.svg";
 export { default as EditSvg } from "./edit.svg";
 export { default as PhotoSvg } from "./photo.svg";
 export { default as ErrorSvg } from "./error.svg";
+export { default as DownloadSvg } from "./download.svg";
+export { default as TrashSvg } from "./trash.svg";

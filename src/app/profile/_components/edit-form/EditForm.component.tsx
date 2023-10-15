@@ -7,7 +7,7 @@ import axios from "axios";
 import {
   errorNotification,
   successNotification,
-} from "@/lib/utils/notification";
+} from "../../../../lib/utils/notification";
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./EditForm.module.scss";
 
@@ -22,8 +22,8 @@ type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   isActive: boolean;
   isVerified: boolean;
   email: string;

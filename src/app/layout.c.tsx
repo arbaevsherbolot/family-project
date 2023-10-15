@@ -8,8 +8,8 @@ type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
 
 type User = {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   isActive: boolean;
   isVerified: boolean;
   email: string;

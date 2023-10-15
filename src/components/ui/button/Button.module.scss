@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.35rem;
 
   transition: 0.25s;
 
@@ -57,6 +58,14 @@
         transform: rotate(360deg);
       }
     }
+  }
+
+  &.delete {
+    background: rgb(255, 39, 39);
+  }
+
+  &.black {
+    background: rgb(20, 20, 20);
   }
 
   &.edit {
