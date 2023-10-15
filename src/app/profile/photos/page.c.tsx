@@ -137,6 +137,7 @@ export default function PhotosClient({ session, images }: props) {
           <div
             style={{
               display: "flex",
+              flexWrap: "wrap",
               alignItems: "center",
               gap: "0.25rem",
             }}>
