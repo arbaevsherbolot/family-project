@@ -4,9 +4,7 @@ import Image from "next/image";
 import React, { Suspense, useState } from "react";
 import Modal from "../../../components/ui/modal/Modal.component";
 import Upload from "../../../components/ui/upload/Upload.component";
-import Button from "../../../components/ui/button/Button.component";
 import { formatDate } from "../../../lib/utils/format-date";
-import { DownloadSvg, ShareSvg, TrashSvg } from "../../../assets/svg";
 import styles from "./Photos.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -133,33 +131,6 @@ export default function PhotosClient({ session, images }: props) {
             }}>
             {formatDate(selectImage.createdAt)}
           </h2>
-
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "0.25rem",
-            }}>
-            <Button load={false} type="button">
-              Скачать
-              <DownloadSvg />
-            </Button>
-
-            <Button load={false} type="button" style="black" onClick={share}>
-              Поделиться
-              <ShareSvg
-                style={{
-                  fill: "#fff",
-                }}
-              />
-            </Button>
-
-            <Button load={false} type="button" style="delete">
-              Удалить
-              <TrashSvg />
-            </Button>
-          </div>
         </Modal>
       )}
     </>
