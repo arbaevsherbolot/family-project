@@ -125,6 +125,7 @@ export default function PhotosClient({ session, images }: props) {
 
           <h2
             style={{
+              padding: "0.65rem 0.55rem",
               fontSize: "0.875rem",
               fontWeight: "500",
               color: "rgba(8, 8, 8, 0.426)",
