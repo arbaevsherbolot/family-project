@@ -11,7 +11,6 @@ import {
 import Button from "../../../../components/ui/button/Button.component";
 import styles from "./EditForm.module.scss";
 
-
 type FormData = {
   firstName: string;
   lastName: string;
@@ -105,7 +104,7 @@ export default function EditForm({ user, session }: props) {
           <div className={styles.inputs_container}>
             <div className={styles.cupple}>
               <div className={styles.input_container}>
-                <span className={styles.label}>Имя</span>
+                {/* <span className={styles.label}>Имя</span> */}
 
                 <input
                   type="text"
@@ -137,7 +136,7 @@ export default function EditForm({ user, session }: props) {
               </div>
 
               <div className={styles.input_container}>
-                <span className={styles.label}>Фамилия</span>
+                {/* <span className={styles.label}>Фамилия</span> */}
 
                 <input
                   type="text"
@@ -170,7 +169,7 @@ export default function EditForm({ user, session }: props) {
             </div>
 
             <div className={styles.input_container}>
-              <span className={styles.label}>Биография</span>
+              {/* <span className={styles.label}>Биография</span> */}
 
               <textarea
                 disabled={loading}

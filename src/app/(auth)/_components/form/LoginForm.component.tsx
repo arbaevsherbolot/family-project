@@ -76,11 +76,11 @@ export default function LoginForm() {
     <>
       <div className={styles.form_wrapper}>
         <form className={styles.form} onSubmit={handleSubmit(handleSubmitForm)}>
-          <div className={styles.title}>Вход</div>
+          <div className={styles.title}>Войдите в свой аккаунт</div>
 
           <div className={styles.inputs_container}>
             <div className={styles.input_container}>
-              <span className={styles.label}>Электронная почта</span>
+              {/* <span className={styles.label}>Электронная почта</span> */}
 
               <input
                 type="text"
@@ -88,7 +88,7 @@ export default function LoginForm() {
                 className={
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
-                placeholder="sherbolot@wedevx.co"
+                placeholder="Электронная почта"
                 onFocus={handleShowInput}
                 {...register("email", {
                   required: "Требуется электронная почта",
@@ -107,7 +107,7 @@ export default function LoginForm() {
             <div
               className={styles.input_container}
               style={!showInput ? { display: "none" } : { display: "flex" }}>
-              <span className={styles.label}>Пароль</span>
+              {/* <span className={styles.label}>Пароль</span> */}
 
               <input
                 type="password"
@@ -118,7 +118,7 @@ export default function LoginForm() {
                     ? `${styles.input} ${styles.load} ${styles.password}`
                     : `${styles.input} ${styles.password}`
                 }
-                placeholder="123456"
+                placeholder="Пароль"
                 {...register("password", {
                   required: "Пароль обязателен",
                   minLength: {

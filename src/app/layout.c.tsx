@@ -43,10 +43,10 @@ export default function RootLayoutClient({ children, user }: props) {
           flex: "1 1 auto",
         }}>
         {children}
-        <Toaster richColors />
+        <Toaster theme="dark" />
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
