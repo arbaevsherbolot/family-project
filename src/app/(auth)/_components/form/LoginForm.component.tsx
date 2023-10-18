@@ -13,7 +13,7 @@ import Button from "../../../../components/ui/button/Button.component";
 import styles from "./Form.module.scss";
 
 type FormData = {
-  email: string;
+  emailOrName: string;
   password: string;
 };
 
@@ -68,7 +68,7 @@ export default function LoginForm() {
     const cookieEmail = getCookie("email");
 
     if (cookieEmail) {
-      setValue("email", cookieEmail);
+      setValue("emailOrName", cookieEmail);
     }
   }, [setValue]);
 
@@ -88,19 +88,22 @@ export default function LoginForm() {
                 className={
                   loading ? `${styles.input} ${styles.load}` : styles.input
                 }
-                placeholder="Электронная почта"
+                placeholder="Электронная почта или имя"
                 onFocus={handleShowInput}
-                {...register("email", {
-                  required: "Требуется электронная почта",
+                {...register("emailOrName", {
+                  required: "Требуется электронная почта или имя",
                   pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Неверный адрес электронной почты",
+                    value:
+                      /^[\p{L}\d]+@[A-Za-z\d.-]+\.[A-Za-z]{2,}$|^[\p{L}\d\s]+$/u,
+                    message: "Неверный адрес электронной почты или имя",
                   },
                 })}
               />
 
-              {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
+              {errors.emailOrName && (
+                <span className={styles.error}>
+                  {errors.emailOrName.message}
+                </span>
               )}
             </div>
 

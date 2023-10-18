@@ -7,10 +7,10 @@ export const authOptions: NextAuthOptions = {
       name: "Log In",
 
       credentials: {
-        email: {
-          label: "Email",
+        emailOrName: {
+          label: "Email Name",
           type: "text",
-          placeholder: "Email",
+          placeholder: "Email or Name",
         },
 
         password: {
@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.emailOrName || !credentials?.password) return null;
 
         try {
           const response = await fetch(
