@@ -88,8 +88,8 @@
 
           outline: 3.2px solid transparent;
 
-          background: #ffffff;
-          border: 0.8px solid #dbdbde;
+          background: rgb(245, 245, 245);
+          border: 0.8px solid transparent;
           border-radius: 0.625rem;
 
           font-size: 0.875rem;
@@ -103,16 +103,11 @@
           }
 
           &::placeholder {
-            color: rgba(55, 53, 47, 0.658);
+            color: rgba(0, 0, 0, 0.8);
           }
 
           &:focus {
-            border-color: #5340ff7f;
-            outline-color: #5340ff2f;
-
-            &::placeholder {
-              color: rgba(55, 53, 47, 0.38);
-            }
+            border-color: #868686b1;
           }
 
           &.load {
@@ -139,7 +134,7 @@
             max-width: 100%;
             min-width: 100%;
 
-            min-height: 250px;
+            min-height: 70px;
             max-height: 320px;
 
             resize: vertical;

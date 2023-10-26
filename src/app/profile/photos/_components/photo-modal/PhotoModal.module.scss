@@ -1,0 +1,74 @@
+.modal_wrappper {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  z-index: 99;
+  overflow: hidden;
+
+  background: rgb(0, 0, 0);
+
+  transition: 0.25s;
+
+  .box {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+    transition: 0.3s;
+
+    .close {
+      padding: 0.2rem;
+
+      position: absolute;
+      left: 20px;
+      top: 20px;
+
+      cursor: pointer;
+
+      font-size: 2.25rem;
+
+      background-color: #c0c0c01a;
+      border-radius: 50%;
+
+      transition: 0.25s;
+
+      &:hover {
+        background: #9b99977c;
+      }
+
+      &:active {
+        background: #969594;
+      }
+
+      &.active {
+        background: #e5e4e2;
+      }
+
+      @media (max-width: 985px) {
+        cursor: default;
+      }
+    }
+
+    .content {
+      max-width: 950px;
+      max-height: 100%;
+
+      overflow-y: scroll;
+    }
+  }
+}

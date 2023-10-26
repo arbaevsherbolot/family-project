@@ -7,7 +7,9 @@ import {
   successNotification,
 } from "../../../lib/utils/notification";
 import { useRouter } from "next/navigation";
+import { ImagesSvg } from "@/assets/svg";
 import Button from "../button/Button.component";
+import NextImage from "next/image";
 
 interface props {
   children: React.ReactNode;
@@ -81,6 +83,7 @@ export default function Upload({
         if (response.data) {
           router.refresh();
           successNotification(success_message);
+          setFile(null);
         }
       }
     } catch (e) {
@@ -91,12 +94,8 @@ export default function Upload({
     }
   };
 
-  useEffect(() => {
-    handleUploadPhoto();
-  }, [file]);
-
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}>
       <input
         type="file"
         name="file"
@@ -107,12 +106,44 @@ export default function Upload({
       />
 
       <Button
-        load={loading}
+        load={false}
         type="button"
         style="edit"
         onClick={() => fileRef.current?.click()}>
-        {children}
+        <ImagesSvg style={{ fontSize: "1.2rem" }} /> Новое фото
       </Button>
-    </>
+
+      {file && (
+        <>
+          <NextImage
+            src={URL.createObjectURL(file)}
+            alt={file.name}
+            width={400}
+            height={400}
+          />
+
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}>
+            <Button
+              load={false}
+              type="button"
+              style="edit"
+              onClick={() => {
+                setFile(null);
+              }}>
+              Удалить
+            </Button>
+
+            <Button
+              load={loading}
+              type="button"
+              style="edit"
+              onClick={() => handleUploadPhoto()}>
+              {children}
+            </Button>
+          </div>
+        </>
+      )}
+    </div>
   );
 }

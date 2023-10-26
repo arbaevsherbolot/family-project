@@ -63,7 +63,7 @@
           outline: 3.2px solid transparent;
 
           background: rgb(245, 245, 245);
-          border: 0.8px solid #dbdbde;
+          border: 0.8px solid transparent;
           border-radius: 0.625rem;
 
           font-size: 0.875rem;
@@ -73,17 +73,11 @@
           transition: 0.25s;
 
           &::placeholder {
-            color: rgba(55, 53, 47, 0.658);
+            color: rgba(17, 21, 24, 0.359);
           }
 
           &:focus {
-            // border-color: #5340ff7f;
-            // outline-color: #5340ff2f;
             border-color: #868686b1;
-
-            &::placeholder {
-              color: rgba(55, 53, 47, 0.38);
-            }
           }
 
           &.load {
