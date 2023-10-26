@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
 import PhotoModal from "./_components/photo-modal/PhotoModal.component";
 import UploadShow from "../../../components/ui/upload/UploadShow.component";
-import { formatDate } from "../../../lib/utils/format-date";
 import styles from "./Photos.module.scss";
 
 type UserRole = "USER" | "ADMIN" | "SUPERADMIN";
@@ -55,6 +53,12 @@ export default function PhotosClient({ session, images }: props) {
   const selectedImage = images.find((image) =>
     selectedImageId ? image.id === parseInt(selectedImageId) : false
   );
+
+  useEffect(() => {
+    if (!selectedImage) {
+      router.push("/profile/photos");
+    }
+  }, [selectedImage]);
 
   const handleOpenImage = (id: number) => {
     router.push(`/profile/photos?photo=${id}`);
